@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,6 +16,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController _crdbAccountController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
+  
+  var letters;
+  
+  var only;
 
   void _register() {
     if (_formKey.currentState!.validate()) {
@@ -35,12 +38,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
      body: SingleChildScrollView(
        child: Container(
-          //color: Color.fromARGB(255, 5, 64, 112),
          child: Column( 
           
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
+            children:<Widget> [
           
               const Padding(
                 padding: EdgeInsets.only(left: 20),
@@ -71,6 +73,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 3),
                 CircleInputField(
                   controller: _fullNameController,
+                label: 'Full Name',
+                hint: 'Enter your full name',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your full name';
+                  }
+                  // You can add additional validation rules for names if needed
+                  return null;
+                }, inputFormatters: [FilteringTextInputFormatter.digitsOnly,]
                   
                 ),
                 const SizedBox(height: 3),
@@ -87,8 +98,21 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 3),
                 CircleInputField(
                   controller: _emailController,
-                  
-                ),
+                   label: 'E-mail',
+                hint: 'Enter your email address',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email address';
+                  }
+                  final emailPattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$';
+                  final regex = RegExp(emailPattern);
+                  if (!regex.hasMatch(value)) {
+                    return 'Please enter a valid email address';
+                  }
+                  return null;
+                }, inputFormatters: [ FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@.]')), // Allow only letters, '@', and '.'
+                                      ],
+                  ),
                 const SizedBox(height: 3),
                 const Padding(
                   padding: EdgeInsets.only(left: 2.0),
@@ -104,6 +128,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 
                 CircleInputField(
                   controller: _phoneController,
+                label: 'Phone Number',
+                hint: 'Enter your phone number',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your phone number';
+                  }
+                  if (int.tryParse(value) == null) {
+                    return 'Please enter a valid phone number';
+                  }
+                  // You can add additional validation rules for phone numbers if needed
+                  return null;
+                }, inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
                 const SizedBox(height: 3),
                 const Padding(
@@ -119,6 +155,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 3),
                 CircleInputField(
                  controller: _cdsAccountController,
+                 label: 'CDS Account',
+  hint: 'Enter your CRDB account number',
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your CDS account number';
+    }
+    // You can add additional validation rules for account numbers if needed
+    return null;
+  },
+  inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Allow only digits
                 ),
                 //const SizedBox(height: 3),
                 TextButton(
@@ -146,6 +192,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 3),
                 CircleInputField(
                   controller: _crdbAccountController,
+                  label: 'CRDB Account',
+  hint: 'Enter your CRDB account number',
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your CRDB account number';
+    }
+    // You can add additional validation rules for account numbers if needed
+    return null;
+  },
+  inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Allow only digits
                 ),
                 //const SizedBox(height: 3),
                 const Padding(
@@ -162,10 +218,35 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 3),
                 CircleInputField(
                   controller: _passwordController,
-                  isPassword: true,
+                  label: 'Create Password',
+  hint: 'Enter your password',
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your password';
+    }
+    if (value.length < 6) {
+      return 'Password must be at least 6 characters';
+    }
+    if (!value.contains(RegExp(r'[A-Z]'))) {
+      return 'Password must contain at least one uppercase letter';
+    }
+    if (!value.contains(RegExp(r'[a-z]'))) {
+      return 'Password must contain at least one lowercase letter';
+    }
+    if (!value.contains(RegExp(r'[0-9]'))) {
+      return 'Password must contain at least one number';
+    }
+    if (!value.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'))) {
+      return 'Password must contain at least one special character';
+    }
+
+    return null;
+  },
+
+                  isPassword: true, 
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
-               // const SizedBox(height: 3),
-                const Padding(
+                 const Padding(
                   padding: EdgeInsets.only(left:2.0),
                   child: Text(
                     'Confirm Password:',
@@ -178,7 +259,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 3),
                 CircleInputField(
                   controller: _confirmPasswordController,
-                  isPassword: true,
+                  label: 'Confirm Password',
+                   hint: 'Confirm your password',
+                      validator: (value) {
+                           if (value == null || value.isEmpty) {
+                       return 'Please confirm your password';
+                         }
+                            if (value != _passwordController.text) {
+                            return 'Passwords do not match';
+                           }
+                                 return null;
+                        },
+
+                  isPassword: true, inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
                 const SizedBox(height: 3),
                 Padding(
@@ -217,20 +310,21 @@ class CircleInputField extends StatelessWidget {
 
   const CircleInputField({
     required this.controller,
-    this.isPassword = false,
+    this.isPassword = false, required String hint, required String label, required String? Function(dynamic value) validator, required List<TextInputFormatter> inputFormatters,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 65,
-      width: 329.0,
+      height: 50,
+      width: 250.0,
       decoration: BoxDecoration(
         color: Colors.white, // White background color inside the box
         borderRadius: BorderRadius.circular(15.0),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 2.0),
       child: TextFormField(
+       keyboardType: TextInputType.emailAddress,
         controller: controller,
         obscureText: isPassword,
         style: const TextStyle(color: Colors.black), // Input text color
