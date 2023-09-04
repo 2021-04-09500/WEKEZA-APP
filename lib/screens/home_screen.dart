@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import './login.dart';
+import './portfolio_page.dart';
+import './auto_invest_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,6 +11,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter App',
       home: MyHomePage(),
+      initialRoute: '/',
+      routes: {
+        //'/': (context) => MyPortfolio(), // Default route
+        '/page1': (context) => LoginPage(), // Add other pages as needed
+        '/third-page': (context) => MyPortfolio(),
+        '/fourth-page': (context) => MyInvest(),
+      },
     ); //MaterialApp
   }
 }
@@ -62,7 +72,7 @@ class MyHomePage extends StatelessWidget {
                           ElevatedButton(
                             child: Text('LOGIN'),
                             onPressed: () {
-                              print('User Logged In');
+                              Navigator.pushNamed(context, '/page1');
                             },
                             style: ElevatedButton.styleFrom(
                               minimumSize:

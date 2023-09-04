@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter App',
       home: LoginPage(),
-      // initialRoute: '/',
+      initialRoute: '/',
       // routes: {
       //'/': (context) => MyPortfolio(), // Default route
       // '/page1': (context) => MyInvest(),
@@ -127,7 +127,9 @@ class LoginPage extends StatelessWidget {
 
                   Center(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/third-page');
+                      },
                       child: Text(
                         'LOG-IN',
                         style: TextStyle(
