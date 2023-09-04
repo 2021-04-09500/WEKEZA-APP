@@ -127,9 +127,7 @@ class LoginPage extends StatelessWidget {
 
                   Center(
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/third-page');
-                      },
+                      onPressed: () {},
                       child: Text(
                         'LOG-IN',
                         style: TextStyle(

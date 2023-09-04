@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter App',
+      home: RegistrationPage(),
+      initialRoute: '/',
+    ); //MaterialApp
+  }
+}
 
 class RegistrationPage extends StatefulWidget {
   @override
@@ -16,9 +28,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController _crdbAccountController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
-  
+
   var letters;
-  
+
   var only;
 
   void _register() {
@@ -33,17 +45,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        backgroundColor: Color.fromARGB(255, 0,31 , 63),
-
-     body: SingleChildScrollView(
-       child: Container(
-         child: Column( 
-          
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-            children:<Widget> [
-          
+      backgroundColor: Color(0xFF001F3F),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
               const Padding(
                 padding: EdgeInsets.only(left: 20),
                 child: Text(
@@ -56,49 +64,50 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                   textAlign: TextAlign.left,
                 ),
-             ),
-              
-            const SizedBox(height: 30),
-            const Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Text(
-                    'Full Name:',
-                    style: TextStyle(
-                      height:0.5,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+              ),
+
+              const SizedBox(height: 30),
+              const Padding(
+                padding: EdgeInsets.only(left: 5.0),
+                child: Text(
+                  'Full Name:',
+                  style: TextStyle(
+                    height: 0.5,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 3),
-                CircleInputField(
+              ),
+              const SizedBox(height: 3),
+              CircleInputField(
                   controller: _fullNameController,
-                label: 'Full Name',
-                hint: 'Enter your full name',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your full name';
-                  }
-                  // You can add additional validation rules for names if needed
-                  return null;
-                }, inputFormatters: [FilteringTextInputFormatter.digitsOnly,]
-                  
-                ),
-                const SizedBox(height: 3),
-                const Padding(
-                  padding: EdgeInsets.only(left: 2.0),
-                  child: Text(
-                    'E-mail:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  label: 'Full Name',
+                  hint: 'Enter your full name',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your full name';
+                    }
+                    // You can add additional validation rules for names if needed
+                    return null;
+                  },
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ]),
+              const SizedBox(height: 3),
+              const Padding(
+                padding: EdgeInsets.only(left: 2.0),
+                child: Text(
+                  'E-mail:',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 3),
-                CircleInputField(
-                  controller: _emailController,
-                   label: 'E-mail',
+              ),
+              const SizedBox(height: 3),
+              CircleInputField(
+                controller: _emailController,
+                label: 'E-mail',
                 hint: 'Enter your email address',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -110,24 +119,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     return 'Please enter a valid email address';
                   }
                   return null;
-                }, inputFormatters: [ FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@.]')), // Allow only letters, '@', and '.'
-                                      ],
-                  ),
-                const SizedBox(height: 3),
-                const Padding(
-                  padding: EdgeInsets.only(left: 2.0),
-                  child: Text(
-                    'Phone no:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                },
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(
+                      r'[a-zA-Z@.]')), // Allow only letters, '@', and '.'
+                ],
+              ),
+              const SizedBox(height: 3),
+              const Padding(
+                padding: EdgeInsets.only(left: 2.0),
+                child: Text(
+                  'Phone no:',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 3),
-                
-                CircleInputField(
-                  controller: _phoneController,
+              ),
+              const SizedBox(height: 3),
+
+              CircleInputField(
+                controller: _phoneController,
                 label: 'Phone Number',
                 hint: 'Enter your phone number',
                 validator: (value) {
@@ -139,170 +151,174 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   }
                   // You can add additional validation rules for phone numbers if needed
                   return null;
-                }, inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                ),
-                const SizedBox(height: 3),
-                const Padding(
-                  padding: EdgeInsets.only(left: 2.0),
-                  child: Text(
-                    'CDS Account:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                },
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              ),
+              const SizedBox(height: 3),
+              const Padding(
+                padding: EdgeInsets.only(left: 2.0),
+                child: Text(
+                  'CDS Account:',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 3),
-                CircleInputField(
-                 controller: _cdsAccountController,
-                 label: 'CDS Account',
-  hint: 'Enter your CRDB account number',
-  validator: (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your CDS account number';
-    }
-    // You can add additional validation rules for account numbers if needed
-    return null;
-  },
-  inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Allow only digits
-                ),
-                //const SizedBox(height: 3),
-                TextButton(
-                  onPressed: () {
-                    // Handle "Don't have CDS account?" click here
-                  },
-                  child: const Text(
-                    "Don't have CDS account? Click here",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+              ),
+              const SizedBox(height: 3),
+              CircleInputField(
+                controller: _cdsAccountController,
+                label: 'CDS Account',
+                hint: 'Enter your CRDB account number',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your CDS account number';
+                  }
+                  // You can add additional validation rules for account numbers if needed
+                  return null;
+                },
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ], // Allow only digits
+              ),
+              //const SizedBox(height: 3),
+              TextButton(
+                onPressed: () {
+                  // Handle "Don't have CDS account?" click here
+                },
+                child: const Text(
+                  "Don't have CDS account? Click here",
+                  style: TextStyle(
+                    color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 3),
-                const Padding(
-                  padding: EdgeInsets.only(left: 2.0),
-                  child: Text(
-                    'CRDB account',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+              ),
+              const SizedBox(height: 3),
+              const Padding(
+                padding: EdgeInsets.only(left: 2.0),
+                child: Text(
+                  'CRDB account',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 3),
-                CircleInputField(
-                  controller: _crdbAccountController,
-                  label: 'CRDB Account',
-  hint: 'Enter your CRDB account number',
-  validator: (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your CRDB account number';
-    }
-    // You can add additional validation rules for account numbers if needed
-    return null;
-  },
-  inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Allow only digits
+              ),
+              const SizedBox(height: 3),
+              CircleInputField(
+                controller: _crdbAccountController,
+                label: 'CRDB Account',
+                hint: 'Enter your CRDB account number',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your CRDB account number';
+                  }
+                  // You can add additional validation rules for account numbers if needed
+                  return null;
+                },
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ], // Allow only digits
+              ),
+              //const SizedBox(height: 3),
+              const Padding(
+                padding: EdgeInsets.only(left: 2.0),
+                child: Text(
+                  'Create password',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                //const SizedBox(height: 3),
-                const Padding(
-                  padding: EdgeInsets.only(left: 2.0),
-                  child: Text(
-                    'Create password',
-                    style: TextStyle(
+              ),
+              const SizedBox(height: 3),
+              CircleInputField(
+                controller: _passwordController,
+                label: 'Create Password',
+                hint: 'Enter your password',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  if (value.length < 6) {
+                    return 'Password must be at least 6 characters';
+                  }
+                  if (!value.contains(RegExp(r'[A-Z]'))) {
+                    return 'Password must contain at least one uppercase letter';
+                  }
+                  if (!value.contains(RegExp(r'[a-z]'))) {
+                    return 'Password must contain at least one lowercase letter';
+                  }
+                  if (!value.contains(RegExp(r'[0-9]'))) {
+                    return 'Password must contain at least one number';
+                  }
+                  if (!value.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'))) {
+                    return 'Password must contain at least one special character';
+                  }
 
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  return null;
+                },
+                isPassword: true,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 2.0),
+                child: Text(
+                  'Confirm Password:',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 3),
-                CircleInputField(
-                  controller: _passwordController,
-                  label: 'Create Password',
-  hint: 'Enter your password',
-  validator: (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your password';
-    }
-    if (value.length < 6) {
-      return 'Password must be at least 6 characters';
-    }
-    if (!value.contains(RegExp(r'[A-Z]'))) {
-      return 'Password must contain at least one uppercase letter';
-    }
-    if (!value.contains(RegExp(r'[a-z]'))) {
-      return 'Password must contain at least one lowercase letter';
-    }
-    if (!value.contains(RegExp(r'[0-9]'))) {
-      return 'Password must contain at least one number';
-    }
-    if (!value.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'))) {
-      return 'Password must contain at least one special character';
-    }
-
-    return null;
-  },
-
-                  isPassword: true, 
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              ),
+              const SizedBox(height: 3),
+              CircleInputField(
+                controller: _confirmPasswordController,
+                label: 'Confirm Password',
+                hint: 'Confirm your password',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please confirm your password';
+                  }
+                  if (value != _passwordController.text) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
+                isPassword: true,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              ),
+              const SizedBox(height: 3),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 120.0),
+                child: ElevatedButton(
+                   onPressed: () {
+                  // Handle "Already have an account? Login" click here
+                  Navigator.pushNamed(context, '/third-page');
+                },
+                  child: const Text('REGISTER'),
                 ),
-                 const Padding(
-                  padding: EdgeInsets.only(left:2.0),
-                  child: Text(
-                    'Confirm Password:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+              ),
+              const SizedBox(height: 2),
+              TextButton(
+                onPressed: () {
+                  // Handle "Already have an account? Login" click here
+                 // Navigator.pushNamed(context, '/third-page');
+                },
+                child: const Text(
+                  "Already have an account? Login",
+                  style: TextStyle(
+                    color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 3),
-                CircleInputField(
-                  controller: _confirmPasswordController,
-                  label: 'Confirm Password',
-                   hint: 'Confirm your password',
-                      validator: (value) {
-                           if (value == null || value.isEmpty) {
-                       return 'Please confirm your password';
-                         }
-                            if (value != _passwordController.text) {
-                            return 'Passwords do not match';
-                           }
-                                 return null;
-                        },
-
-                  isPassword: true, inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                ),
-                const SizedBox(height: 3),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:120.0),
-                  child: ElevatedButton(
-                    onPressed: _register,
-                    child: const Text('REGISTER'),
-                  
-                  ),
-                ),
-                  const SizedBox(height: 2),
-                TextButton(
-                  onPressed: () {
-                    // Handle "Already have an account? Login" click here
-                  },
-                  child: const Text(
-                    "Already have an account? Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
+          ),
         ),
       ),
     );
-
   }
 }
-
 
 class CircleInputField extends StatelessWidget {
   final TextEditingController controller;
@@ -310,7 +326,11 @@ class CircleInputField extends StatelessWidget {
 
   const CircleInputField({
     required this.controller,
-    this.isPassword = false, required String hint, required String label, required String? Function(dynamic value) validator, required List<TextInputFormatter> inputFormatters,
+    this.isPassword = false,
+    required String hint,
+    required String label,
+    required String? Function(dynamic value) validator,
+    required List<TextInputFormatter> inputFormatters,
   });
 
   @override
@@ -324,7 +344,7 @@ class CircleInputField extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 2.0),
       child: TextFormField(
-       keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.emailAddress,
         controller: controller,
         obscureText: isPassword,
         style: const TextStyle(color: Colors.black), // Input text color
