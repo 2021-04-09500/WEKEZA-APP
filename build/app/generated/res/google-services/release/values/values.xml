@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">971520575211-k9p4bjhfqs22gbqhu846sphbkshk7a9c.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">971520575211</string>
+    <string name="google_api_key" translatable="false">AIzaSyC5d3_jEOOTpPK7zbgA2RnY7sgmljVxtaY</string>
+    <string name="google_app_id" translatable="false">1:971520575211:android:65abe170bd5c7f96d9e0ae</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC5d3_jEOOTpPK7zbgA2RnY7sgmljVxtaY</string>
+    <string name="google_storage_bucket" translatable="false">wekeza-app-6a687.appspot.com</string>
+    <string name="project_id" translatable="false">wekeza-app-6a687</string>
+</resources>
