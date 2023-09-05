@@ -34,7 +34,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-        backgroundColor: Color.fromARGB(255, 0,31 , 63),
+        backgroundColor: Color(0XFF001F3F),
 
      body: SingleChildScrollView(
        child: Container(
@@ -50,7 +50,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   'REGISTER',
                   style: TextStyle(
                     height: 7,
-                    color: Colors.white,
+                    color: Color(0XFFF4F9FF),
+                    fontFamily: 'Karla',
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
@@ -65,7 +66,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     'Full Name:',
                     style: TextStyle(
                       height:0.5,
-                      color: Colors.white,
+                      color: Color(0XFFF4F9FF),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -90,7 +91,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: Text(
                     'E-mail:',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0XFFF4F9FF),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -119,7 +120,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: Text(
                     'Phone no:',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0XFFF4F9FF),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -147,7 +148,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: Text(
                     'CDS Account:',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0XFFF4F9FF),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -174,7 +175,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: const Text(
                     "Don't have CDS account? Click here",
                     style: TextStyle(
-                      color: Colors.white,
+                      fontFamily: 'Karla',
+                      color: Color(0XFFF4F9FF),
                     ),
                   ),
                 ),
@@ -184,7 +186,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: Text(
                     'CRDB account',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0XFFF4F9FF),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -209,8 +211,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: Text(
                     'Create password',
                     style: TextStyle(
-
-                      color: Colors.white,
+                       color: Color(0XFFF4F9FF),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -251,7 +252,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: Text(
                     'Confirm Password:',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0XFFF4F9FF),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -290,7 +291,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: const Text(
                     "Already have an account? Login",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0XFFF4F9FF),
                     ),
                   ),
                 ),
@@ -319,7 +320,7 @@ class CircleInputField extends StatelessWidget {
       height: 50,
       width: 250.0,
       decoration: BoxDecoration(
-        color: Colors.white, // White background color inside the box
+        color: Color(0XFFF4F9FF), // White background color inside the box
         borderRadius: BorderRadius.circular(15.0),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 2.0),
