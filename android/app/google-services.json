@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "971520575211",
+    "project_id": "wekeza-app-6a687",
+    "storage_bucket": "wekeza-app-6a687.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971520575211:android:65abe170bd5c7f96d9e0ae",
+        "android_client_info": {
+          "package_name": "com.example.first_flutter_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971520575211-k9p4bjhfqs22gbqhu846sphbkshk7a9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5d3_jEOOTpPK7zbgA2RnY7sgmljVxtaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971520575211-k9p4bjhfqs22gbqhu846sphbkshk7a9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
