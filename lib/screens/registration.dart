@@ -45,6 +45,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       backgroundColor: Color(0xFF001F3F),
       body: SingleChildScrollView(
         child: Container(
@@ -52,18 +53,33 @@ class _RegistrationPageState extends State<RegistrationPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+=======
+
+        backgroundColor: Color(0XFF001F3F),
+
+     body: SingleChildScrollView(
+       child: Container(
+         child: Column( 
+          
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+            children:<Widget> [
+          
+>>>>>>> origin/Sheyla
               const Padding(
                 padding: EdgeInsets.only(left: 20),
                 child: Text(
                   'REGISTER',
                   style: TextStyle(
                     height: 7,
-                    color: Colors.white,
+                    color: Color(0XFFF4F9FF),
+                    fontFamily: 'Karla',
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.left,
                 ),
+<<<<<<< HEAD
               ),
 
               const SizedBox(height: 30),
@@ -75,12 +91,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     height: 0.5,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+=======
+             ),
+              
+            const SizedBox(height: 30),
+            const Padding(
+                  padding: EdgeInsets.only(left: 5.0),
+                  child: Text(
+                    'Full Name:',
+                    style: TextStyle(
+                      height:0.5,
+                      color: Color(0XFFF4F9FF),
+                      fontWeight: FontWeight.bold,
+                    ),
+>>>>>>> origin/Sheyla
                   ),
                 ),
               ),
               const SizedBox(height: 3),
               CircleInputField(
                   controller: _fullNameController,
+<<<<<<< HEAD
                   label: 'Full Name',
                   hint: 'Enter your full name',
                   validator: (value) {
@@ -101,6 +132,28 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+=======
+                label: 'Full Name',
+                hint: 'Enter your full name',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your full name';
+                  }
+                  // You can add additional validation rules for names if needed
+                  return null;
+                }, inputFormatters: [FilteringTextInputFormatter.digitsOnly,]
+                  
+                ),
+                const SizedBox(height: 3),
+                const Padding(
+                  padding: EdgeInsets.only(left: 2.0),
+                  child: Text(
+                    'E-mail:',
+                    style: TextStyle(
+                      color: Color(0XFFF4F9FF),
+                      fontWeight: FontWeight.bold,
+                    ),
+>>>>>>> origin/Sheyla
                   ),
                 ),
               ),
@@ -119,6 +172,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     return 'Please enter a valid email address';
                   }
                   return null;
+<<<<<<< HEAD
                 },
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(
@@ -133,6 +187,20 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+=======
+                }, inputFormatters: [ FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@.]')), // Allow only letters, '@', and '.'
+                                      ],
+                  ),
+                const SizedBox(height: 3),
+                const Padding(
+                  padding: EdgeInsets.only(left: 2.0),
+                  child: Text(
+                    'Phone no:',
+                    style: TextStyle(
+                      color: Color(0XFFF4F9FF),
+                      fontWeight: FontWeight.bold,
+                    ),
+>>>>>>> origin/Sheyla
                   ),
                 ),
               ),
@@ -151,6 +219,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   }
                   // You can add additional validation rules for phone numbers if needed
                   return null;
+<<<<<<< HEAD
                 },
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               ),
@@ -201,6 +270,57 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+=======
+                }, inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                ),
+                const SizedBox(height: 3),
+                const Padding(
+                  padding: EdgeInsets.only(left: 2.0),
+                  child: Text(
+                    'CDS Account:',
+                    style: TextStyle(
+                      color: Color(0XFFF4F9FF),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 3),
+                CircleInputField(
+                 controller: _cdsAccountController,
+                 label: 'CDS Account',
+  hint: 'Enter your CRDB account number',
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your CDS account number';
+    }
+    // You can add additional validation rules for account numbers if needed
+    return null;
+  },
+  inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Allow only digits
+                ),
+                //const SizedBox(height: 3),
+                TextButton(
+                  onPressed: () {
+                    // Handle "Don't have CDS account?" click here
+                  },
+                  child: const Text(
+                    "Don't have CDS account? Click here",
+                    style: TextStyle(
+                      fontFamily: 'Karla',
+                      color: Color(0XFFF4F9FF),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 3),
+                const Padding(
+                  padding: EdgeInsets.only(left: 2.0),
+                  child: Text(
+                    'CRDB account',
+                    style: TextStyle(
+                      color: Color(0XFFF4F9FF),
+                      fontWeight: FontWeight.bold,
+                    ),
+>>>>>>> origin/Sheyla
                   ),
                 ),
               ),
@@ -230,6 +350,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+<<<<<<< HEAD
               ),
               const SizedBox(height: 3),
               CircleInputField(
@@ -268,6 +389,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+=======
+                //const SizedBox(height: 3),
+                const Padding(
+                  padding: EdgeInsets.only(left: 2.0),
+                  child: Text(
+                    'Create password',
+                    style: TextStyle(
+                       color: Color(0XFFF4F9FF),
+                      fontWeight: FontWeight.bold,
+                    ),
+>>>>>>> origin/Sheyla
                   ),
                 ),
               ),
@@ -298,6 +430,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 },
                   child: const Text('REGISTER'),
                 ),
+<<<<<<< HEAD
               ),
               const SizedBox(height: 2),
               TextButton(
@@ -314,6 +447,58 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ],
           ),
+=======
+                 const Padding(
+                  padding: EdgeInsets.only(left:2.0),
+                  child: Text(
+                    'Confirm Password:',
+                    style: TextStyle(
+                      color: Color(0XFFF4F9FF),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 3),
+                CircleInputField(
+                  controller: _confirmPasswordController,
+                  label: 'Confirm Password',
+                   hint: 'Confirm your password',
+                      validator: (value) {
+                           if (value == null || value.isEmpty) {
+                       return 'Please confirm your password';
+                         }
+                            if (value != _passwordController.text) {
+                            return 'Passwords do not match';
+                           }
+                                 return null;
+                        },
+
+                  isPassword: true, inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                ),
+                const SizedBox(height: 3),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:120.0),
+                  child: ElevatedButton(
+                    onPressed: _register,
+                    child: const Text('REGISTER'),
+                  
+                  ),
+                ),
+                  const SizedBox(height: 2),
+                TextButton(
+                  onPressed: () {
+                    // Handle "Already have an account? Login" click here
+                  },
+                  child: const Text(
+                    "Already have an account? Login",
+                    style: TextStyle(
+                      color: Color(0XFFF4F9FF),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+>>>>>>> origin/Sheyla
         ),
       ),
     );
@@ -339,7 +524,7 @@ class CircleInputField extends StatelessWidget {
       height: 50,
       width: 250.0,
       decoration: BoxDecoration(
-        color: Colors.white, // White background color inside the box
+        color: Color(0XFFF4F9FF), // White background color inside the box
         borderRadius: BorderRadius.circular(15.0),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 2.0),
