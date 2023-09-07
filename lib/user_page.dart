@@ -1,4 +1,16 @@
 import 'package:flutter/material.dart';
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+         title: 'Flutter App',
+          home: UserPage(),
+    ); //MaterialApp
+  }
+}
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -92,7 +104,7 @@ class _UserPageState extends State<UserPage> {
                       color: Color(0XFFF4F9FF),
                       fontSize: 20.0,
                       fontFamily: 'Karla',
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w200,
                     ),
                   ),
                   Text(
@@ -149,6 +161,7 @@ class _UserPageState extends State<UserPage> {
               style: TextStyle(
                 color: Color(0XFFF4F9FF),
                 fontSize: 18.0,
+                fontFamily:'Jura',
               ),
             ),
             Container(
@@ -165,18 +178,18 @@ class _UserPageState extends State<UserPage> {
                       color: Color(0xFF0075F9),
                     ),
                     padding: EdgeInsets.all(28.0),
-                    child: Column(
-                      children: const [
+                    child: const Column(
+                      children: [
                         Row(
                           children: [
                             Image(
-                              image: AssetImage('assets/images/logoo1.png'),
+                              image: AssetImage('assets/images/logooz.png'),
                             ),
                             Text(
                               'CRDB BANK',
                               style: TextStyle(
                                 color: Color(0XFFF4F9FF),
-                                fontSize: 16.0,
+                                fontSize: 20.0,
                                 fontFamily: 'Jura',
                               ),
                             ),
@@ -184,7 +197,7 @@ class _UserPageState extends State<UserPage> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                         // crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Column(
                               children: [
@@ -197,24 +210,25 @@ class _UserPageState extends State<UserPage> {
                                     fontFamily: 'Jura',
                                   ),
                                 ),
-                                Text(
+                                    Text(
                                   '8,777,050',
                                   style: TextStyle(
                                     color: Color(0XFFF4F9FF),
                                     fontSize: 16.0,
-                                    fontFamily: 'Jura',
+                                    fontFamily:'Jura',
                                   ),
                                 ),
-                              ],
-                            ),
                             Text(
-                              '0.77%',
+                              '0.73%',
                               style: TextStyle(
                                 color: Color(0XFFF4F9FF),
-                                fontSize: 16.0,
-                                fontFamily: 'Jura',
+                                fontSize: 20.0,
+                                fontFamily:'Jura',
                               ),
                             ),
+                                  ]
+                                ),
+                                
                           ],
                         ),
                       ],
@@ -248,4 +262,3 @@ class _UserPageState extends State<UserPage> {
     );
   }
 }
-
