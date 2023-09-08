@@ -64,10 +64,15 @@ flutter:
   assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+      - assets/images/logoo1.png
       - assets/images/download.png
       - assets/images/apple.png
       - assets/images/facebook.jpg
+<<<<<<< HEAD
       - assets/images/crdb.jpg
+=======
+      - assets/images/logooz.png
+>>>>>>> origin/Sheyla
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
