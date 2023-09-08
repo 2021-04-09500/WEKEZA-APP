@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 import 'package:first_flutter_application/portfolio_page.dart';
+=======
+// ignore_for_file: library_private_types_in_public_api, avoid_print, avoid_unnecessary_containers, prefer_const_declarations
+
+>>>>>>> origin/Waziri
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:first_flutter_application/user_page.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter App',
       home: RegistrationPage(),
       initialRoute: '/',
@@ -16,40 +26,71 @@ class MyApp extends StatelessWidget {
 }
 
 class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
+
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  // ignore: unused_field
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController _fullNameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _cdsAccountController = TextEditingController();
-  TextEditingController _crdbAccountController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmPasswordController = TextEditingController();
+  final _fullNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _cdsAccountController = TextEditingController();
+  final _crdbAccountController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
-  var letters;
+  //Future<void> _register() async {}
+  Future<bool> _register() async {
+    var isRegistred = false;
 
-  var only;
+    final url = Uri.parse('http://localhost:5000/register');
 
-  void _register() {
-    if (_formKey.currentState!.validate()) {
-      // Perform registration logic here
-      // For example, you can send registration data to an API
-      // and handle success/failure accordingly.
-      // You can also navigate to the next screen after successful registration.
+    final response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, dynamic>{
+        "name": _fullNameController.text.trim(),
+        "cds_account": _cdsAccountController.text.trim(),
+        "email": _emailController.text.trim(),
+        "crdb_account": _crdbAccountController.text.trim(),
+        "password": _passwordController.text.trim(),
+        "phone": _phoneController.text.trim()
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // Request was successful
+      print('Response data: ${response.body}');
+      isRegistred = true;
+    } else {
+      // Request failed
+      print('Failed to send POST request. Status code: ${response.statusCode}');
+      print('Response data: ${response.body}');
     }
+
+    return isRegistred;
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
+<<<<<<< HEAD
       // backgroundColor: Color(0xFF001F3F),
       body: SingleChildScrollView(
         child: Container(
           color: Color(0xFF001F3F),
+=======
+      backgroundColor: const Color.fromARGB(255, 0, 31, 63),
+      body: SingleChildScrollView(
+        child: Container(
+>>>>>>> origin/Waziri
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -87,6 +128,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   hint: 'Enter your full name',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
+<<<<<<< HEAD
+=======
+                      debugPrint("Full Name error");
+>>>>>>> origin/Waziri
                       return 'Please enter your full name';
                     }
                     // You can add additional validation rules for names if needed
@@ -113,11 +158,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 hint: 'Enter your email address',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
+                    debugPrint("Full Name error");
                     return 'Please enter your email address';
                   }
                   final emailPattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$';
                   final regex = RegExp(emailPattern);
                   if (!regex.hasMatch(value)) {
+                    debugPrint("email error");
                     return 'Please enter a valid email address';
                   }
                   return null;
@@ -146,6 +193,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 hint: 'Enter your phone number',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
+                    debugPrint("Phone number error");
                     return 'Please enter your phone number';
                   }
                   if (int.tryParse(value) == null) {
@@ -174,6 +222,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 hint: 'Enter your CRDB account number',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
+<<<<<<< HEAD
+=======
+                    debugPrint("CDS Account error");
+>>>>>>> origin/Waziri
                     return 'Please enter your CDS account number';
                   }
                   // You can add additional validation rules for account numbers if needed
@@ -213,6 +265,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 hint: 'Enter your CRDB account number',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
+<<<<<<< HEAD
+=======
+                    debugPrint("acoount not validated");
+>>>>>>> origin/Waziri
                     return 'Please enter your CRDB account number';
                   }
                   // You can add additional validation rules for account numbers if needed
@@ -293,10 +349,28 @@ class _RegistrationPageState extends State<RegistrationPage> {
               const SizedBox(height: 3),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 120.0),
+<<<<<<< HEAD
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => MyPortfolio()));
+=======
+                
+                child: ElevatedButton(
+                  onPressed: () async {
+                    final isRegistered = await _register();
+                    if (isRegistered) {
+                      if (context.mounted) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserPage()));
+                      }
+                    } else {
+                      print("Failed to register");
+                      
+                    }
+>>>>>>> origin/Waziri
                   },
                   child: const Text('REGISTER'),
                 ),
@@ -310,10 +384,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   "Already have an account? Login",
                   style: TextStyle(
                     color: Colors.white,
+<<<<<<< HEAD
                     decoration: TextDecoration.underline,
                     decorationColor: Colors
                         .white, // Optional: You can specify the underline color
                     decorationThickness: 2.0,
+=======
+>>>>>>> origin/Waziri
                   ),
                 ),
               ),
@@ -330,6 +407,7 @@ class CircleInputField extends StatelessWidget {
   final bool isPassword;
 
   const CircleInputField({
+    super.key,
     required this.controller,
     this.isPassword = false,
     required String hint,
@@ -344,7 +422,7 @@ class CircleInputField extends StatelessWidget {
       height: 50,
       width: 250.0,
       decoration: BoxDecoration(
-        color: Color(0XFFF4F9FF), // White background color inside the box
+        color: const Color(0XFFF4F9FF), // White background color inside the box
         borderRadius: BorderRadius.circular(15.0),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 2.0),
