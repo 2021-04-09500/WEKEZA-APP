@@ -3,6 +3,7 @@ import './login.dart';
 import './portfolio_page.dart';
 import './auto_invest_page.dart';
 import './registration.dart';
+import './buying_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/page2': (context) => RegistrationPage(),
         '/third-page': (context) => MyPortfolio(),
         '/fourth-page': (context) => MyInvest(),
+        '/fifth-page': (context) => MyBuying(),
       },
     ); //MaterialApp
   }

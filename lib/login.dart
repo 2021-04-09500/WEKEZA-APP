@@ -209,7 +209,7 @@ class LoginPage extends StatelessWidget {
                       // ),
                       // ),
                       HoverLink(
-                        text: 'Forgot password',
+                        text: ('Forgot password'),
                         defaultStyle: TextStyle(
                             fontSize: 16.0, // Set the font size here
                             color: Color(0xFFF4F9FF),
@@ -244,6 +244,10 @@ class LoginPage extends StatelessWidget {
                             color: Color(0xFFF4F9FF),
                             fontFamily: 'Karla',
                             fontWeight: FontWeight.w300,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors
+                                .white, // Optional: You can specify the underline color
+                            decorationThickness: 2.0,
                           ),
                         ),
                       ],

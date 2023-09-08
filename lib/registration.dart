@@ -46,9 +46,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 0, 31, 63),
+      // backgroundColor: Color(0xFF001F3F),
       body: SingleChildScrollView(
         child: Container(
+          color: Color(0xFF001F3F),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -58,11 +59,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'REGISTER',
                   style: TextStyle(
-                    height: 7,
-                    color: Color(0XFFF4F9FF),
-                    fontFamily: 'Karla',
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 40.0, // Set the font size here
+                    color: Color(0xFFF4F9FF),
+                    fontFamily: 'Khula',
+                    fontWeight: FontWeight.w300,
                   ),
                   textAlign: TextAlign.left,
                 ),
@@ -295,8 +295,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 120.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyPortfolio()));
-
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyPortfolio()));
                   },
                   child: const Text('REGISTER'),
                 ),
@@ -310,6 +310,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   "Already have an account? Login",
                   style: TextStyle(
                     color: Colors.white,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors
+                        .white, // Optional: You can specify the underline color
+                    decorationThickness: 2.0,
                   ),
                 ),
               ),
