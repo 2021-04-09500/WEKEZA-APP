@@ -24,8 +24,8 @@ class MyPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Color(0xFF001F3F),
+      backgroundColor: Color(0xFF001F3F),
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +37,7 @@ class MyPortfolio extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 50),
+                          SizedBox(height: 30),
                           Text(
                             'WELCOME',
                             style: TextStyle(

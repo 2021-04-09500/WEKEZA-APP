@@ -25,13 +25,13 @@ class MyInvest extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFF001F3F),
+        color: const Color(0xFF001F3F),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 40),
+                 const SizedBox(height: 40),
                   Padding(
                     padding: EdgeInsets.only(left: 10.0),
                     child: ElevatedButton(

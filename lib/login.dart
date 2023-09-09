@@ -40,7 +40,7 @@ class LoginPage extends StatelessWidget {
       //title: Text('LOGIN'),
       //),
       body: Container(
-        color: Color(0xFF001F3F),
+        color: const Color(0xFF001F3F),
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Center(
@@ -49,15 +49,15 @@ class LoginPage extends StatelessWidget {
                 //mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 50),
-                  Text('LOGIN',
+                  const SizedBox(height: 50),
+                  const Text('LOGIN',
                       style: TextStyle(
                           fontSize: 40,
                           color: Color(0xFFD9D9D9),
                           fontFamily: 'Karla',
                           fontWeight: FontWeight.w400)),
-                  SizedBox(height: 40),
-                  Text('E-Mail',
+                  const SizedBox(height: 40),
+                  const Text('E-Mail',
                       style: TextStyle(
                           fontSize: 20,
                           color: Color(0xFFD9D9D9),
@@ -67,21 +67,21 @@ class LoginPage extends StatelessWidget {
                     width: 300,
                     child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
-                        style:
-                            TextStyle(color: Color(0xFF000000), fontSize: 18.0),
+                        style: const TextStyle(
+                            color: Color(0xFF000000), fontSize: 18.0),
                         decoration: InputDecoration(
                           //labelText: 'Enter amount',
                           //labelStyle: TextStyle(
                           // color: Colors
                           // .blue), // Set label (hint) text color
-                          fillColor: Color(0xFFD9D9D9)
+                          fillColor: const Color(0xFFD9D9D9)
                               .withOpacity(0.9), // Set background color
                           filled: true,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                                 20.0), // Set circular radius
                           ),
-                          focusedBorder: OutlineInputBorder(
+                          focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color(
                                     0xFFD9D9D9)), // Set focused border color
@@ -90,8 +90,8 @@ class LoginPage extends StatelessWidget {
                         maxLines: 1,
                         minLines: 1),
                   ),
-                  SizedBox(height: 16),
-                  Text('Password',
+                  const SizedBox(height: 16),
+                  const Text('Password',
                       style: TextStyle(
                           fontSize: 20,
                           color: Color(0xFFD9D9D9),
@@ -106,14 +106,14 @@ class LoginPage extends StatelessWidget {
                         //labelStyle: TextStyle(
                         // color: Colors
                         // .blue), // Set label (hint) text color
-                        fillColor: Color(0xFFD9D9D9)
+                        fillColor: const Color(0xFFD9D9D9)
                             .withOpacity(0.9), // Set background color
                         filled: true,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
                               20.0), // Set circular radius
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Color(
                                   0xFFD9D9D9)), // Set focused border color
@@ -123,7 +123,7 @@ class LoginPage extends StatelessWidget {
                       minLines: 1,
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
 
                   Center(
                     child: ElevatedButton(
@@ -146,8 +146,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 25),
-                  Text(
+                  const SizedBox(height: 25),
+                  const Text(
                     'Or continue with',
                     style: TextStyle(
                       fontSize: 20,
@@ -155,7 +155,7 @@ class LoginPage extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //Text('Forgot password?'),
                   //Text('Do not have an account yet? Register'),
 
@@ -172,7 +172,7 @@ class LoginPage extends StatelessWidget {
                                   height: 40.0),
                             ]),
                           ),
-                          SizedBox(width: 30),
+                          const SizedBox(width: 30),
                           TextButton(
                             onPressed: _signInWithGoogle,
                             child:
@@ -181,7 +181,7 @@ class LoginPage extends StatelessWidget {
                                   height: 40.0),
                             ]),
                           ),
-                          SizedBox(width: 30),
+                          const SizedBox(width: 30),
                           TextButton(
                             onPressed: _signInWithGoogle,
                             child:
@@ -192,7 +192,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         ])
                       ]),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   // GestureDetector(
                   // onTap: () {
@@ -210,12 +210,12 @@ class LoginPage extends StatelessWidget {
                       // ),
                       HoverLink(
                         text: ('Forgot password'),
-                        defaultStyle: TextStyle(
+                        defaultStyle: const TextStyle(
                             fontSize: 16.0, // Set the font size here
                             color: Color(0xFFF4F9FF),
                             fontFamily: 'Karla',
                             fontWeight: FontWeight.w300),
-                        hoverStyle: TextStyle(
+                        hoverStyle: const TextStyle(
                           color: Colors.red,
                           decoration: TextDecoration.underline,
                         ),
@@ -227,14 +227,14 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
                   GestureDetector(
                     onTap: () {
                       // Handle link click here
                       print('Link clicked!');
                     },
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(

@@ -70,9 +70,13 @@ flutter:
       - assets/images/facebook.jpg
 <<<<<<< HEAD
       - assets/images/crdb.jpg
+<<<<<<< HEAD
 =======
       - assets/images/logooz.png
 >>>>>>> origin/Sheyla
+=======
+      - assets/images/tra.jpg
+>>>>>>> lucent
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
