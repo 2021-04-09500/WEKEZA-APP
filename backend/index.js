@@ -106,7 +106,7 @@ app.get('/user/:email', function (req, res) {
 app.post('/register', (req, res) => {
 
   const { name, email, cds_account, crdb_account, password, phone } = req.body;
-
+//ens
   if (!name || !email) {
     return res.status(400).json({
       error: true,
