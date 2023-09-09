@@ -37,8 +37,8 @@ class MyHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
-                      child: Padding(
+                   Container(
+                      child: const Padding(
                         padding: EdgeInsets.only(left: 16),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -74,16 +74,16 @@ class MyHomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           ElevatedButton(
-                            child: Text('LOGIN'),
+                            child:  Text('LOGIN'),
                             onPressed: () {
                               Navigator.pushNamed(context, '/page1');
                             },
                             style: ElevatedButton.styleFrom(
                               minimumSize:
-                                  Size(129, 62), // Set the size of the button
+                                 const Size(129, 62), // Set the size of the button
                             ),
                           ), //ElevatedButton
-                          SizedBox(width: 37),
+                         const SizedBox(width: 37),
                           ElevatedButton(
                             child: Text('SIGN UP'), //Text
                             onPressed: () {
@@ -91,7 +91,7 @@ class MyHomePage extends StatelessWidget {
                             },
                             style: ElevatedButton.styleFrom(
                               minimumSize:
-                                  Size(129, 62), // Set the size of the button
+                                const  Size(129, 62), // Set the size of the button
                             ),
                           ), //ElevatedButton
                         ])
