@@ -67,6 +67,11 @@ flutter:
       - assets/images/download.png
       - assets/images/apple.png
       - assets/images/facebook.jpg
+<<<<<<< Updated upstream
+=======
+      - assets/images/crdb.jpg
+      - assets/images/logooz.png
+>>>>>>> Stashed changes
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

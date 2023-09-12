@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+import 'package:first_flutter_application/portfolio_page.dart';
+>>>>>>> Stashed changes
 // ignore_for_file: library_private_types_in_public_api, avoid_print, avoid_unnecessary_containers, prefer_const_declarations
 
 import 'package:flutter/material.dart';
@@ -75,7 +79,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 31, 63),
       body: SingleChildScrollView(
@@ -330,7 +333,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
               const SizedBox(height: 3),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 120.0),
+<<<<<<< Updated upstream
                 
+=======
+>>>>>>> Stashed changes
                 child: ElevatedButton(
                   onPressed: () async {
                     final isRegistered = await _register();
@@ -343,7 +349,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       }
                     } else {
                       print("Failed to register");
-                      
                     }
                   },
                   child: const Text('REGISTER'),
