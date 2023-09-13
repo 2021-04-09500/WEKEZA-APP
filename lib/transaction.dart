@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyDividend extends StatefulWidget {
+  const MyDividend({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter App',
-      home: MyDividend(),
-      initialRoute: '/',
-    ); //MaterialApp
-  }
+  State<MyDividend> createState() => _MyDividendState();
 }
 
-// ignore: must_be_immutable
-class MyDividend extends StatelessWidget {
+class _MyDividendState extends State<MyDividend> {
+
   final List<String> dataList = [
     "Item 1",
     "Item 2",
@@ -25,10 +20,9 @@ class MyDividend extends StatelessWidget {
 
   //bool alternateOrder = false;
 
-  MyDividend({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
       backgroundColor: const Color(0xFF001F3F),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

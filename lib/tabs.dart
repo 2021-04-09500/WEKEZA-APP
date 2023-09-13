@@ -2,21 +2,16 @@ import 'package:flutter/material.dart';
 import './portfolio_page.dart';
 import './buying_page.dart';
 import './transaction.dart';
+import './dividends.dart' as Dividend;
 
-void main() {
-  runApp(MyApp());
-}
+class MyTabbedPage extends StatefulWidget {
+  const MyTabbedPage({super.key});
 
-class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyTabbedPage(),
-    );
-  }
+  State<MyTabbedPage> createState() => _MyTabbedPageState();
 }
 
-class MyTabbedPage extends StatelessWidget {
+class _MyTabbedPageState extends State<MyTabbedPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -90,7 +85,7 @@ class MyTabbedPage extends StatelessWidget {
                   children: [
                     MyPortfolio(), // Use the content class from another file
                     MyBuying(), // You can have different content for each tab
-                    MyDividend(),
+                    const MyDividend(),
                   ],
                 ),
               ),
