@@ -1,3 +1,4 @@
+import 'package:first_flutter_application/portfolio_page.dart';
 import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,44 +25,37 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   //Future<void> _register() async {}
   Future<bool> _register() async {
-    var isRegistred = false;
+    bool isRegistered;
+    var headers = {'Content-Type': 'application/json'};
+    var request =
+        http.Request('POST', Uri.parse('http://localhost:5002/register'));
+    request.body = json.encode({
+      "name": _fullNameController,
+      "email": _emailController,
+      "phone": _phoneController,
+      "cds_account": _cdsAccountController,
+      "crdb_account": _crdbAccountController,
+      "password": _passwordController
+    });
+    request.headers.addAll(headers);
 
-    final url = Uri.parse('http://localhost:5000/register');
-
-    final response = await http.post(
-      url,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, dynamic>{
-        "name": _fullNameController.text.trim(),
-        "cds_account": _cdsAccountController.text.trim(),
-        "email": _emailController.text.trim(),
-        "crdb_account": _crdbAccountController.text.trim(),
-        "password": _passwordController.text.trim(),
-        "phone": _phoneController.text.trim()
-      }),
-    );
+    http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      // Request was successful
-      print('Response data: ${response.body}');
-      isRegistred = true;
+      isRegistered = true;
+      print(await response.stream.bytesToString());
     } else {
-      // Request failed
-      print('Failed to send POST request. Status code: ${response.statusCode}');
-      print('Response data: ${response.body}');
+      print(response.reasonPhrase);
+      isRegistered = false;
     }
 
-    return isRegistred;
+    return isRegistered;
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
-
-      backgroundColor:  Color(0xFF001F3F),
+      backgroundColor: Color(0xFF001F3F),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -74,7 +68,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   'REGISTER',
                   style: TextStyle(
                     height: 7,
-                    color:  Color(0XFFF4F9FF),
+                    color: Color(0XFFF4F9FF),
                     fontFamily: 'Karla',
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -82,7 +76,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   textAlign: TextAlign.left,
                 ),
               ),
-
               const SizedBox(height: 30),
               const Padding(
                 padding: EdgeInsets.only(left: 5.0),
@@ -90,34 +83,35 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   'Full Name:',
                   style: TextStyle(
                     height: 0.5,
-                    color:  Color(0XFFF4F9FF),
+                    color: Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               const SizedBox(height: 3),
               CircleInputField(
-                  controller: _fullNameController,
-                  label: 'Full Name',
-                  hint: 'Enter your full name',
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      debugPrint("Full Name error");
-                      return 'Please enter your full name';
-                    }
-                    // You can add additional validation rules for names if needed
-                    return null;
-                  },
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                  ]),
+                controller: _fullNameController,
+                label: 'Full Name',
+                hint: 'Enter your full name',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    debugPrint("Full Name error");
+                    return 'Please enter your full name';
+                  }
+                  // You can add additional validation rules for names if needed
+                  return null;
+                },
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
+              ),
               const SizedBox(height: 3),
               const Padding(
                 padding: EdgeInsets.only(left: 2.0),
                 child: Text(
                   'E-mail:',
                   style: TextStyle(
-                    color:  Color(0XFFF4F9FF),
+                    color: Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -130,9 +124,39 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     debugPrint("Full Name error");
+                    return 'Please enter your full name';
+                  }
+                  // You can add additional validation rules for names if needed
+                  return null;
+                },
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(
+                      r'[a-zA-Z@.]')), // Allow only letters, '@', and '.'
+                ],
+              ),
+              const SizedBox(height: 3),
+              const Padding(
+                padding: EdgeInsets.only(left: 2.0),
+                child: Text(
+                  'Phone no:',
+                  style: TextStyle(
+                    color: Color(0XFFF4F9FF),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 3),
+              CircleInputField(
+                controller: _emailController,
+                label: 'E-mail',
+                hint: 'Enter your email address',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    debugPrint("Full Name error");
                     return 'Please enter your email address';
                   }
-                  final emailPattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$';
+                  const emailPattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$';
                   final regex = RegExp(emailPattern);
                   if (!regex.hasMatch(value)) {
                     debugPrint("email error");
@@ -151,7 +175,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Phone no:',
                   style: TextStyle(
-                    color:  Color(0XFFF4F9FF),
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -181,7 +205,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'CDS Account:',
                   style: TextStyle(
-                    color:  Color(0XFFF4F9FF),
+                    color: Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -211,7 +235,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: const Text(
                   "Don't have CDS account? Click here",
                   style: TextStyle(
-                    color:  Color(0XFFF4F9FF),
+                    color: Color(0XFFF4F9FF),
                   ),
                 ),
               ),
@@ -221,7 +245,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'CRDB account',
                   style: TextStyle(
-                    color:  Color(0XFFF4F9FF),
+                    color: Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -249,11 +273,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Create password',
                   style: TextStyle(
-                    color:  Color(0XFFF4F9FF),
+                    color: Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
+
               const SizedBox(height: 3),
               CircleInputField(
                 controller: _passwordController,
@@ -289,11 +314,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Confirm Password:',
                   style: TextStyle(
-                    color:  Color(0XFFF4F9FF),
+                    color: Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
+
               const SizedBox(height: 3),
               CircleInputField(
                 controller: _confirmPasswordController,
@@ -314,7 +340,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
               const SizedBox(height: 3),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 120.0),
-                
                 child: ElevatedButton(
                   onPressed: () async {
                     final isRegistered = await _register();
@@ -323,29 +348,21 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => UserPage()));
+                                builder: (context) => MyPortfolio()));
                       }
                     } else {
                       print("Failed to register");
-                      
                     }
                   },
-                  child: const Text('REGISTER'),
-                ),
-              ),
-              const SizedBox(height: 2),
-              TextButton(
-                onPressed: () {
-                  // Handle "Already have an account? Login" click here
-                },
-                child: const Text(
-                  "Already have an account? Login",
-                  style: TextStyle(
-                    color: Colors.white,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors
-                        .white, // Optional: You can specify the underline color
-                    decorationThickness: 2.0,
+                  child: const Text(
+                    "Already have an account? Login",
+                    style: TextStyle(
+                      color: Colors.white,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors
+                          .white, // Optional: You can specify the underline color
+                      decorationThickness: 2.0,
+                    ),
                   ),
                 ),
               ),
