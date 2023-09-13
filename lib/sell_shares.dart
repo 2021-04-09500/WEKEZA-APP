@@ -1,4 +1,16 @@
-MaterialApp(
+import 'package:flutter/material.dart';
+
+class SellShares extends StatefulWidget {
+  const SellShares({super.key});
+
+  @override
+  State<SellShares> createState() => _SellSharesState();
+}
+
+class _SellSharesState extends State<SellShares> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       home: Directionality(
         textDirection: TextDirection.ltr,
         child: Scaffold(
@@ -1145,4 +1157,6 @@ MaterialApp(
           ),
         ),
       ),
-    )
+    );
+  }
+}
