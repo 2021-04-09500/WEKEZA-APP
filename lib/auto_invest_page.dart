@@ -19,7 +19,6 @@ class MyInvest extends StatelessWidget {
                     padding: EdgeInsets.only(left: 10.0),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.popUntil(context, ModalRoute.withName('/third-page'));
                       },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
