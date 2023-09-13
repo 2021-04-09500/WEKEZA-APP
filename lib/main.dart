@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import './login.dart';
-import './portfolio_page.dart';
+import './auth/login.dart';
+import './tabs/portfolio_page.dart';
 import './auto_invest_page.dart';
-import './registration.dart';
-import './buying_page.dart';
+import './auth/registration.dart';
+import './tabs/buying_page.dart';
 
 void main() => runApp(MyApp());
 

@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-import 'package:first_flutter_application/buying_page.dart';
+import 'package:first_flutter_application/tabs/buying_page.dart';
 import 'package:flutter/material.dart';
 //import './auto_invest_page.dart';
 

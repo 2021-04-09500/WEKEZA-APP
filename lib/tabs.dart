@@ -1,8 +1,7 @@
+import 'package:first_flutter_application/tabs/buying_page.dart';
+import 'package:first_flutter_application/tabs/portfolio_page.dart';
 import 'package:flutter/material.dart';
-import './portfolio_page.dart';
-import './buying_page.dart';
-import './transaction.dart';
-import './dividends.dart' as Dividend;
+import 'tabs/transaction.dart';
 
 class MyTabbedPage extends StatefulWidget {
   const MyTabbedPage({super.key});
@@ -85,7 +84,7 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
                   children: [
                     MyPortfolio(), // Use the content class from another file
                     MyBuying(), // You can have different content for each tab
-                    const MyDividend(),
+                    MyTransactions()
                   ],
                 ),
               ),

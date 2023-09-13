@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 
-class MyDividend extends StatefulWidget {
-  const MyDividend({super.key});
+class MyTransactions extends StatefulWidget {
+  const MyTransactions({super.key});
 
   @override
-  State<MyDividend> createState() => _MyDividendState();
+  State<MyTransactions> createState() => _MyTransactionsState();
 }
 
-class _MyDividendState extends State<MyDividend> {
+class _MyTransactionsState extends State<MyTransactions> {
 
   final List<String> dataList = [
     "Item 1",
