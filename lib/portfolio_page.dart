@@ -16,7 +16,7 @@ class MyPortfolio extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  child: Padding(
+                  child: const Padding(
                       padding: EdgeInsets.only(left: 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,26 +191,11 @@ class MyPortfolio extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-<<<<<<< HEAD
-                  Navigator.pushNamed(context, '/fifth_page');
-=======
-                  print("Buy New Clicked");
                   // Navigator.push(context,
                   //     MaterialPageRoute(builder: (context) => MyBuying()));
                   Navigator.push(context, MaterialPageRoute(builder: (context) => MyBuying()));
 
-                      print("Navigated");
->>>>>>> origin/Sheyla
                 },
-                child: Text(
-                  'Buy New',
-                  style: TextStyle(
-                    fontSize: 20.0, // Set the font size here
-                    color: Color(0xFFF4F9FF),
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(350, 50), //Set the size of the butt
                   primary: Color(0xFF0062F4),
@@ -218,6 +203,15 @@ class MyPortfolio extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(15), // Set border radius
+                  ),
+                ),
+                child: const Text(
+                  'Buy New',
+                  style: TextStyle(
+                    fontSize: 20.0, // Set the font size here
+                    color: Color(0xFFF4F9FF),
+                    fontFamily: 'Karla',
+                    fontWeight: FontWeight.w300,
                   ),
                 ),
               ),

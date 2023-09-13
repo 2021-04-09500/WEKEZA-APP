@@ -1,33 +1,9 @@
-<<<<<<< HEAD
-import 'package:first_flutter_application/portfolio_page.dart';
-=======
-// ignore_for_file: library_private_types_in_public_api, avoid_print, avoid_unnecessary_containers, prefer_const_declarations
-
->>>>>>> origin/Waziri
+import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:first_flutter_application/user_page.dart';
 
-<<<<<<< HEAD
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter App',
-      home: RegistrationPage(),
-      initialRoute: '/',
-    ); //MaterialApp
-  }
-}
-
-=======
->>>>>>> origin/Sheyla
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
 
@@ -84,20 +60,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     
     return Scaffold(
-<<<<<<< HEAD
-<<<<<<< HEAD
-      // backgroundColor: Color(0xFF001F3F),
-=======
+
       backgroundColor:  Color(0xFF001F3F),
->>>>>>> origin/Sheyla
       body: SingleChildScrollView(
         child: Container(
-          color: Color(0xFF001F3F),
-=======
-      backgroundColor: const Color.fromARGB(255, 0, 31, 63),
-      body: SingleChildScrollView(
-        child: Container(
->>>>>>> origin/Waziri
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -107,18 +73,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'REGISTER',
                   style: TextStyle(
-<<<<<<< HEAD
-                    fontSize: 40.0, // Set the font size here
-                    color: Color(0xFFF4F9FF),
-                    fontFamily: 'Khula',
-                    fontWeight: FontWeight.w300,
-=======
                     height: 7,
                     color:  Color(0XFFF4F9FF),
                     fontFamily: 'Karla',
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
->>>>>>> origin/Sheyla
                   ),
                   textAlign: TextAlign.left,
                 ),
@@ -143,10 +102,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   hint: 'Enter your full name',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-<<<<<<< HEAD
-=======
                       debugPrint("Full Name error");
->>>>>>> origin/Waziri
                       return 'Please enter your full name';
                     }
                     // You can add additional validation rules for names if needed
@@ -237,10 +193,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 hint: 'Enter your CRDB account number',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-<<<<<<< HEAD
-=======
                     debugPrint("CDS Account error");
->>>>>>> origin/Waziri
                     return 'Please enter your CDS account number';
                   }
                   // You can add additional validation rules for account numbers if needed
@@ -280,10 +233,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 hint: 'Enter your CRDB account number',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-<<<<<<< HEAD
-=======
                     debugPrint("acoount not validated");
->>>>>>> origin/Waziri
                     return 'Please enter your CRDB account number';
                   }
                   // You can add additional validation rules for account numbers if needed
@@ -364,12 +314,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
               const SizedBox(height: 3),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 120.0),
-<<<<<<< HEAD
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyPortfolio()));
-=======
                 
                 child: ElevatedButton(
                   onPressed: () async {
@@ -385,7 +329,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       print("Failed to register");
                       
                     }
->>>>>>> origin/Waziri
                   },
                   child: const Text('REGISTER'),
                 ),
@@ -398,18 +341,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: const Text(
                   "Already have an account? Login",
                   style: TextStyle(
-<<<<<<< HEAD
                     color: Colors.white,
-<<<<<<< HEAD
                     decoration: TextDecoration.underline,
                     decorationColor: Colors
                         .white, // Optional: You can specify the underline color
                     decorationThickness: 2.0,
-=======
->>>>>>> origin/Waziri
-=======
-                    color:  Color(0XFFF4F9FF),
->>>>>>> origin/Sheyla
                   ),
                 ),
               ),
