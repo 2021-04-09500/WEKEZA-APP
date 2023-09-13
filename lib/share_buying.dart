@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SuccessfulTransactionApp());
+class Share extends StatefulWidget {
+  const Share({super.key});
+
+  @override
+  State<Share> createState() => _ShareState();
 }
 
-class SuccessfulTransactionApp extends StatelessWidget {
+class _ShareState extends State<Share> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

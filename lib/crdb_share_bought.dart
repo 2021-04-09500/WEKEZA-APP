@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SuccessfulTransaction());
+class SharesBought extends StatefulWidget {
+  const SharesBought({super.key});
+
+  @override
+  State<SharesBought> createState() => _SharesBoughtState();
 }
 
-class SuccessfulTransaction extends StatelessWidget {
+class _SharesBoughtState extends State<SharesBought> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -102,3 +105,4 @@ class SuccessfulTransaction extends StatelessWidget {
     );
   }
 }
+
