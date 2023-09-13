@@ -2,24 +2,6 @@ import 'package:flutter/material.dart';
 
 import './link.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter App',
-      home: LoginPage(),
-      initialRoute: '/',
-      // routes: {
-      //'/': (context) => MyPortfolio(), // Default route
-      // '/page1': (context) => MyInvest(),
-      // '/page2': (context) => MyPortfolio(), // Add other pages as needed
-      //},
-    ); //MaterialApp
-  }
-}
-
 class LoginPage extends StatelessWidget {
   Future<void> _signInWithGoogle() async {
     // Implement Google Sign-In logic here
