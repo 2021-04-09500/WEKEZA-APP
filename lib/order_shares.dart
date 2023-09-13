@@ -691,21 +691,23 @@ class BuySharesPage extends StatelessWidget {
                       Positioned(
                         left: 28,
                         top: 14,
-                        TextButton(
-                        child: Text(
-                          'Order',
-                          style: TextStyle(
+                        child: TextButton(
+                          child: const Text(
+                            'Order',
+                            style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontFamily: 'Karla',
                             fontWeight: FontWeight.w300,
                           ),
+                          ),
+                          
+                          onPressed: () {
+                          
+                          }
                         ),
-                        onPressed(){
-                          // code to navigate to the page
-                        }
                       ),
-                      ),
+                      
                     ],
                   ),
                 ),
