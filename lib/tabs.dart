@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import './portfolio_page.dart';
+import './buying_page.dart';
+import './transaction.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,23 +20,81 @@ class MyTabbedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3, // Number of tabs
+      length: 3, // Set the number of tabs
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Tabbed Page'),
-          bottom: TabBar(
-            tabs: [
-              Tab(text: 'Tab 1'),
-              Tab(text: 'Tab 2'),
-              Tab(text: 'Tab 3'),
-            ],
-          ),
+        backgroundColor: const Color(0xFF001F3F),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(0), // Hide the default AppBar
+          child: Container(),
         ),
-        body: TabBarView(
+        body: Column(
           children: [
-            Center(child: Text('Tab 1 content')),
-            Center(child: Text('Tab 2 content')),
-            Center(child: Text('Tab 3 content')),
+            SizedBox(height: 30),
+            // Oval-shaped Tab Bar
+            Container(
+              width: 300,
+              height: 40, // Adjust the height of the tab bar
+              decoration: ShapeDecoration(
+                shape: StadiumBorder(), // Oval shape
+                color: Color(0xFF00162E), // Tab bar background color
+              ),
+              child: TabBar(
+                tabs: [
+                  Tab(
+                    child: Text(
+                      'Home',
+                      style: TextStyle(
+                        fontSize: 16.0, // Set the font size here
+                        color: Color(0xFFF4F9FF),
+                        fontFamily: 'Jura',
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      'Market',
+                      style: TextStyle(
+                        fontSize: 16.0, // Set the font size here
+                        color: Color(0xFFF4F9FF),
+                        fontFamily: 'Jura',
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      'History',
+                      style: TextStyle(
+                        fontSize: 16.0, // Set the font size here
+                        color: Color(0xFFF4F9FF),
+                        fontFamily: 'Jura',
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
+                ],
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                      50), // Adjust the border radius to match the tab shape
+                  color: Color(0xFF0062F4), // Tab indicator color
+                ),
+              ),
+            ),
+
+            // Content of the screen
+            Expanded(
+              child: Container(
+                color: Color(0xFF00162E),
+                child: TabBarView(
+                  children: [
+                    MyPortfolio(), // Use the content class from another file
+                    MyBuying(), // You can have different content for each tab
+                    MyDividend(),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
