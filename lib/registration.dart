@@ -33,7 +33,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 0, 31, 63),
+      backgroundColor:  Color(0xFF001F3F),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -46,7 +46,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   'REGISTER',
                   style: TextStyle(
                     height: 7,
-                    color: Color(0XFFF4F9FF),
+                    color:  Color(0XFFF4F9FF),
                     fontFamily: 'Karla',
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   'Full Name:',
                   style: TextStyle(
                     height: 0.5,
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -88,7 +88,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'E-mail:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -120,7 +120,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Phone no:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -149,7 +149,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'CDS Account:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -178,7 +178,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: const Text(
                   "Don't have CDS account? Click here",
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                   ),
                 ),
               ),
@@ -188,7 +188,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'CRDB account',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -215,7 +215,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Create password',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -255,7 +255,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Confirm Password:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -296,7 +296,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: const Text(
                   "Already have an account? Login",
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                   ),
                 ),
               ),
