@@ -1,24 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:first_flutter_application/buying_page.dart';
 import 'package:flutter/material.dart';
 //import './auto_invest_page.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      // routes: {
-      //'/': (context) => MyPortfolio(), // Default route
-      //'/page1': (context) => MyInvest(), // Add other pages as needed
-      // },
-      title: 'Flutter App',
-      home: MyPortfolio(),
-    ); //MaterialApp
-  }
-}
 
 class MyPortfolio extends StatelessWidget {
   @override
@@ -185,7 +169,7 @@ class MyPortfolio extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Center(
+                      const Center(
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
@@ -206,7 +190,14 @@ class MyPortfolio extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  print("Buy New Clicked");
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => MyBuying()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyBuying()));
+
+                      print("Navigated");
+                },
                 child: Text(
                   'Buy New',
                   style: TextStyle(

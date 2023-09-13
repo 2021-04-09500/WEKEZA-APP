@@ -8,121 +8,171 @@ class TransactionPage extends StatefulWidget {
 }
 
 class TransactionPageState extends State<TransactionPage> {
+  String amount = ''; // Store the entered amount
+
+  // Function to handle button press
+  void onButtonPressed(String value) {
+    setState(() {
+      if (value == ' ←') {
+        // Handle backspace
+        if (amount.isNotEmpty) {
+          amount = amount.substring(0, amount.length - 1);
+        }
+      } else {
+        // Append the value to the amount
+        amount += value;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 0, 31, 63),
+      backgroundColor:Color(0XFF001F3F),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'INVEST',
-              style: TextStyle(
-                fontSize: 32,
-                color: Colors.white,
+            Row(
+              children: [
+                Container(
+                  width: 55,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color:  Color(0xFF0075F9),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color:   Color(0XFFF4F9FF),
+                  ),
+                ),
+                SizedBox(width: 15, height: 50),
+                const Text(
+                  'INVEST',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontFamily: 'Karla',
+                    color:  Color(0XFFF4F9FF),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 6),
+            Center( // Center "CRDB BANK" text and its icon
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/logooz.png',
+                    width: 65,
+                    height: 65,
+                  ),
+                  SizedBox(width: 10), // Add some spacing between the icon and text
+                  Text(
+                    'CRDB BANK',
+                    style: TextStyle(color:  Color(0XFFF4F9FF), fontSize: 40),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/logooz.png',
-                  width: 50,
-                  height: 50,
-                ),
-                Text('CRDB BANK', style: TextStyle(color: Colors.white, fontSize: 32,), ),
-              ],
+            Text(
+              'Amount',
+              style: TextStyle(color:  Color(0XFFF4F9FF)),
             ),
-            SizedBox(height: 20),
-            Text('Amount', style: TextStyle(color: Colors.white),),
             SizedBox(height: 10),
             Container(
-              width:320,
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(15.0)),
+              width: 290,
+              decoration: BoxDecoration(
+                color:  Color(0XFFF4F9FF),
+                borderRadius: BorderRadius.circular(15.0),
+              ),
               child: TextFormField(
                 keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.start,
                 maxLines: 1,
-                decoration: const InputDecoration(
+                readOnly: true, // Make the text field read-only
+                controller: TextEditingController(text: amount), // Set the text controller
+                decoration: InputDecoration(
                   border: InputBorder.none,
-                  fillColor: Colors.white,
+                  fillColor:  Color(0XFFF4F9FF),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      borderSide: BorderSide(color: Colors.blue)),
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    borderSide: BorderSide(color: Color(0xFF0075F9),),
+                  ),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            SizedBox(height: 30,),
+            Column(
               children: [
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    NumberButton('1'),
-                   // color:Color.white,
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    NumberButton('4'),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    NumberButton('7'),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    NumberButton('.', columnAlignment: CrossAxisAlignment.end),
+                    for (String buttonValue in ['1', '2', '3'])
+                      NumberButton(
+                        buttonValue,
+                        onTap: () => onButtonPressed(buttonValue),
+                      ),
                   ],
                 ),
-                Column(
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    NumberButton('2'),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    NumberButton('5'),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    NumberButton('8'),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    NumberButton('0', columnAlignment: CrossAxisAlignment.end),
+                    for (String buttonValue in ['4', '5', '6'])
+                      NumberButton(
+                        buttonValue,
+                        onTap: () => onButtonPressed(buttonValue),
+                      ),
                   ],
                 ),
-                Column(
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    NumberButton('3'),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    NumberButton('6'),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    NumberButton('9'),
-                    const SizedBox(
-                      height: 19.0,
-                    ),
-                    NumberButton('⬅️',
-                        columnAlignment: CrossAxisAlignment.center),
+                    for (String buttonValue in ['7', '8', '9'])
+                      NumberButton(
+                        buttonValue,
+                        onTap: () => onButtonPressed(buttonValue),
+                      ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    for (String buttonValue in ['.', '0', ' ←'])
+                      NumberButton(
+                        buttonValue,
+                        onTap: () => onButtonPressed(buttonValue),
+                      ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 50,),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 100)
+            SizedBox(height: 20),
+            Center( // Center the "Order" container
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom( 
+                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15)
+                ),
+                onPressed: () {
+                  // Add your order functionality here
+                },
+                child: const Text(
+                  'Order',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Karla',
+                    color:  Color(0XFFF4F9FF),
+                  ),
+                ),
               ),
-              onPressed: () {
-                // Add your order functionality here
-              },
-              child: const Text('Order'),
             ),
           ],
         ),
@@ -133,27 +183,31 @@ class TransactionPageState extends State<TransactionPage> {
 
 class NumberButton extends StatelessWidget {
   final String text;
-  final CrossAxisAlignment columnAlignment;
+  final Function onTap;
 
-   NumberButton(this.text, {this.columnAlignment = CrossAxisAlignment.start});
+  NumberButton(this.text, {required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: Container(
+        width: 70,
+        height: 70,
+        decoration: BoxDecoration(
           border: Border.all(),
           shape: BoxShape.rectangle,
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-          color: Colors.lightBlue
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+          color: Color(0xFF0075F9),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(fontSize: 20, color: Color(0XFFF4F9FF),),
           ),
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
     );
   }
 }
+ 
