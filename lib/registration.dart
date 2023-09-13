@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:first_flutter_application/user_page.dart';
 
+<<<<<<< HEAD
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+=======
+>>>>>>> origin/Sheyla
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
 
@@ -82,7 +85,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
     
     return Scaffold(
 <<<<<<< HEAD
+<<<<<<< HEAD
       // backgroundColor: Color(0xFF001F3F),
+=======
+      backgroundColor:  Color(0xFF001F3F),
+>>>>>>> origin/Sheyla
       body: SingleChildScrollView(
         child: Container(
           color: Color(0xFF001F3F),
@@ -100,10 +107,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'REGISTER',
                   style: TextStyle(
+<<<<<<< HEAD
                     fontSize: 40.0, // Set the font size here
                     color: Color(0xFFF4F9FF),
                     fontFamily: 'Khula',
                     fontWeight: FontWeight.w300,
+=======
+                    height: 7,
+                    color:  Color(0XFFF4F9FF),
+                    fontFamily: 'Karla',
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+>>>>>>> origin/Sheyla
                   ),
                   textAlign: TextAlign.left,
                 ),
@@ -116,7 +131,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   'Full Name:',
                   style: TextStyle(
                     height: 0.5,
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -146,7 +161,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'E-mail:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -180,7 +195,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Phone no:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -210,7 +225,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'CDS Account:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -243,7 +258,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: const Text(
                   "Don't have CDS account? Click here",
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                   ),
                 ),
               ),
@@ -253,7 +268,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'CRDB account',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -284,7 +299,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Create password',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -324,7 +339,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: Text(
                   'Confirm Password:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  Color(0XFFF4F9FF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -383,6 +398,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: const Text(
                   "Already have an account? Login",
                   style: TextStyle(
+<<<<<<< HEAD
                     color: Colors.white,
 <<<<<<< HEAD
                     decoration: TextDecoration.underline,
@@ -391,6 +407,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     decorationThickness: 2.0,
 =======
 >>>>>>> origin/Waziri
+=======
+                    color:  Color(0XFFF4F9FF),
+>>>>>>> origin/Sheyla
                   ),
                 ),
               ),

@@ -1,16 +1,6 @@
+import 'package:first_flutter_application/auto_invest_page.dart';
+import 'package:first_flutter_application/transaction_page.dart';
 import 'package:flutter/material.dart';
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-         title: 'Flutter App',
-          home: UserPage(),
-    ); //MaterialApp
-  }
-}
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -140,7 +130,9 @@ class _UserPageState extends State<UserPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => MyInvest()));
+                        },
                         child: Text('Auto Invest'),
                         style: ElevatedButton.styleFrom(
                           primary: Color(0XFF001F3F),
@@ -244,7 +236,10 @@ class _UserPageState extends State<UserPage> {
               child: Container(
                 width: 150, // Set the width as needed
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                      //Temporary to view Transactions
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => TransactionPage()));
+                  },
                   child: Text('View details'),
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFF0075F9),
