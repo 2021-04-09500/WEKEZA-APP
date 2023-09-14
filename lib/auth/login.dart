@@ -1,10 +1,15 @@
+import 'dart:convert';
+
 import 'package:first_flutter_application/auth/registration.dart';
 import 'package:first_flutter_application/link.dart';
 import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatelessWidget {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   Future<void> _signInWithGoogle() async {
     // Implement Google Sign-In logic here
   }
@@ -15,6 +20,36 @@ class LoginPage extends StatelessWidget {
 
   Future<void> _signInWithApple() async {
     // Implement Apple Sign-In logic here
+  }
+
+  Future<bool> _login() async {
+    bool isLogin = false;
+    final String username = _usernameController.text;
+    final String password = _passwordController.text;
+
+    final response = await http.post(
+      Uri.parse(
+          'http://localhost:5000/login'), // Replace with your API endpoint
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, String>{
+        'username': username,
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // Successful login, you can navigate to another screen or perform actions here
+      final responseData = jsonDecode(response.body);
+      print('Login successful: ${responseData['message']}');
+      isLogin = true;
+    } else {
+      // Error handling for failed login
+      print('Login failed: ${response.body}');
+    }
+
+    return isLogin;
   }
 
   @override
@@ -50,6 +85,7 @@ class LoginPage extends StatelessWidget {
                   Container(
                     width: 300,
                     child: TextFormField(
+                        controller: _usernameController,
                         keyboardType: TextInputType.emailAddress,
                         style: const TextStyle(
                             color: Color(0xFF000000), fontSize: 18.0),
@@ -84,6 +120,7 @@ class LoginPage extends StatelessWidget {
                   Container(
                     width: 300,
                     child: TextFormField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         //labelText: 'Enter amount',
@@ -112,7 +149,17 @@ class LoginPage extends StatelessWidget {
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => UserPage()), (route) => (false));
+                        _login().then((isLogin) {
+                          if (isLogin) {
+                            if (context.mounted) {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserPage()),
+                                  (route) => (false));
+                            }
+                          }
+                        });
                       },
                       child: Text(
                         'LOG-IN',
@@ -217,7 +264,10 @@ class LoginPage extends StatelessWidget {
 
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegistrationPage()));
                     },
                     child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
