@@ -1,26 +1,15 @@
+import 'dart:convert';
+
+import 'package:first_flutter_application/auth/registration.dart';
+import 'package:first_flutter_application/link.dart';
+import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
-
-import './link.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter App',
-      home: LoginPage(),
-      initialRoute: '/',
-      // routes: {
-      //'/': (context) => MyPortfolio(), // Default route
-      // '/page1': (context) => MyInvest(),
-      // '/page2': (context) => MyPortfolio(), // Add other pages as needed
-      //},
-    ); //MaterialApp
-  }
-}
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatelessWidget {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   Future<void> _signInWithGoogle() async {
     // Implement Google Sign-In logic here
   }
@@ -33,6 +22,36 @@ class LoginPage extends StatelessWidget {
     // Implement Apple Sign-In logic here
   }
 
+  Future<bool> _login() async {
+    bool isLogin = false;
+    final String username = _usernameController.text;
+    final String password = _passwordController.text;
+
+    final response = await http.post(
+      Uri.parse(
+          'http://localhost:5000/login'), // Replace with your API endpoint
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, String>{
+        'username': username,
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // Successful login, you can navigate to another screen or perform actions here
+      final responseData = jsonDecode(response.body);
+      print('Login successful: ${responseData['message']}');
+      isLogin = true;
+    } else {
+      // Error handling for failed login
+      print('Login failed: ${response.body}');
+    }
+
+    return isLogin;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +59,7 @@ class LoginPage extends StatelessWidget {
       //title: Text('LOGIN'),
       //),
       body: Container(
-        color: Color(0xFF001F3F),
+        color: const Color(0xFF001F3F),
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Center(
@@ -49,15 +68,15 @@ class LoginPage extends StatelessWidget {
                 //mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 50),
-                  Text('LOGIN',
+                  const SizedBox(height: 50),
+                  const Text('LOGIN',
                       style: TextStyle(
                           fontSize: 40,
                           color: Color(0xFFD9D9D9),
                           fontFamily: 'Karla',
                           fontWeight: FontWeight.w400)),
-                  SizedBox(height: 40),
-                  Text('E-Mail',
+                  const SizedBox(height: 40),
+                  const Text('E-Mail',
                       style: TextStyle(
                           fontSize: 20,
                           color: Color(0xFFD9D9D9),
@@ -66,22 +85,23 @@ class LoginPage extends StatelessWidget {
                   Container(
                     width: 300,
                     child: TextFormField(
+                        controller: _usernameController,
                         keyboardType: TextInputType.emailAddress,
-                        style:
-                            TextStyle(color: Color(0xFF000000), fontSize: 18.0),
+                        style: const TextStyle(
+                            color: Color(0xFF000000), fontSize: 18.0),
                         decoration: InputDecoration(
                           //labelText: 'Enter amount',
                           //labelStyle: TextStyle(
                           // color: Colors
                           // .blue), // Set label (hint) text color
-                          fillColor: Color(0xFFD9D9D9)
+                          fillColor: const Color(0xFFD9D9D9)
                               .withOpacity(0.9), // Set background color
                           filled: true,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                                 20.0), // Set circular radius
                           ),
-                          focusedBorder: OutlineInputBorder(
+                          focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color(
                                     0xFFD9D9D9)), // Set focused border color
@@ -90,8 +110,8 @@ class LoginPage extends StatelessWidget {
                         maxLines: 1,
                         minLines: 1),
                   ),
-                  SizedBox(height: 16),
-                  Text('Password',
+                  const SizedBox(height: 16),
+                  const Text('Password',
                       style: TextStyle(
                           fontSize: 20,
                           color: Color(0xFFD9D9D9),
@@ -100,20 +120,21 @@ class LoginPage extends StatelessWidget {
                   Container(
                     width: 300,
                     child: TextFormField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         //labelText: 'Enter amount',
                         //labelStyle: TextStyle(
                         // color: Colors
                         // .blue), // Set label (hint) text color
-                        fillColor: Color(0xFFD9D9D9)
+                        fillColor: const Color(0xFFD9D9D9)
                             .withOpacity(0.9), // Set background color
                         filled: true,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
                               20.0), // Set circular radius
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Color(
                                   0xFFD9D9D9)), // Set focused border color
@@ -123,11 +144,23 @@ class LoginPage extends StatelessWidget {
                       minLines: 1,
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
 
                   Center(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _login().then((isLogin) {
+                          if (isLogin) {
+                            if (context.mounted) {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserPage()),
+                                  (route) => (false));
+                            }
+                          }
+                        });
+                      },
                       child: Text(
                         'LOG-IN',
                         style: TextStyle(
@@ -146,8 +179,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 25),
-                  Text(
+                  const SizedBox(height: 25),
+                  const Text(
                     'Or continue with',
                     style: TextStyle(
                       fontSize: 20,
@@ -155,7 +188,7 @@ class LoginPage extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //Text('Forgot password?'),
                   //Text('Do not have an account yet? Register'),
 
@@ -172,7 +205,7 @@ class LoginPage extends StatelessWidget {
                                   height: 40.0),
                             ]),
                           ),
-                          SizedBox(width: 30),
+                          const SizedBox(width: 30),
                           TextButton(
                             onPressed: _signInWithGoogle,
                             child:
@@ -181,7 +214,7 @@ class LoginPage extends StatelessWidget {
                                   height: 40.0),
                             ]),
                           ),
-                          SizedBox(width: 30),
+                          const SizedBox(width: 30),
                           TextButton(
                             onPressed: _signInWithGoogle,
                             child:
@@ -192,7 +225,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         ])
                       ]),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   // GestureDetector(
                   // onTap: () {
@@ -209,13 +242,13 @@ class LoginPage extends StatelessWidget {
                       // ),
                       // ),
                       HoverLink(
-                        text: 'Forgot password',
-                        defaultStyle: TextStyle(
+                        text: ('Forgot password'),
+                        defaultStyle: const TextStyle(
                             fontSize: 16.0, // Set the font size here
                             color: Color(0xFFF4F9FF),
                             fontFamily: 'Karla',
                             fontWeight: FontWeight.w300),
-                        hoverStyle: TextStyle(
+                        hoverStyle: const TextStyle(
                           color: Colors.red,
                           decoration: TextDecoration.underline,
                         ),
@@ -227,14 +260,16 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
                   GestureDetector(
                     onTap: () {
-                      // Handle link click here
-                      print('Link clicked!');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegistrationPage()));
                     },
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -244,6 +279,10 @@ class LoginPage extends StatelessWidget {
                             color: Color(0xFFF4F9FF),
                             fontFamily: 'Karla',
                             fontWeight: FontWeight.w300,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors
+                                .white, // Optional: You can specify the underline color
+                            decorationThickness: 2.0,
                           ),
                         ),
                       ],

@@ -62,8 +62,14 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///home/waziri/snap/flutter/common/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "get",
-      "rootUri": "file:///home/waziri/.pub-cache/hosted/pub.dev/get-4.6.5",
+      "rootUri": "file:///home/waziri/.pub-cache/hosted/pub.dev/get-4.6.6",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -110,10 +116,22 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "pinput",
+      "rootUri": "file:///home/waziri/.pub-cache/hosted/pub.dev/pinput-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///home/waziri/snap/flutter/common/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "smart_auth",
+      "rootUri": "file:///home/waziri/.pub-cache/hosted/pub.dev/smart_auth-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
     },
     {
       "name": "source_span",
@@ -158,6 +176,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "universal_platform",
+      "rootUri": "file:///home/waziri/.pub-cache/hosted/pub.dev/universal_platform-1.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///home/waziri/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -176,7 +200,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-09-13T17:04:38.113764Z",
+  "generated": "2023-09-14T08:14:07.510151Z",
   "generator": "pub",
   "generatorVersion": "3.1.0"
 }

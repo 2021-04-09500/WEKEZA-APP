@@ -1,43 +1,27 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:first_flutter_application/tabs/buying_page.dart';
 import 'package:flutter/material.dart';
 //import './auto_invest_page.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      // routes: {
-      //'/': (context) => MyPortfolio(), // Default route
-      //'/page1': (context) => MyInvest(), // Add other pages as needed
-      // },
-      title: 'Flutter App',
-      home: MyPortfolio(),
-    ); //MaterialApp
-  }
-}
 
 class MyPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Color(0xFF001F3F),
+      backgroundColor: Color(0xFF001F3F),
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  child: Padding(
+                  child: const Padding(
                       padding: EdgeInsets.only(left: 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 50),
+                          SizedBox(height: 30),
                           Text(
                             'WELCOME',
                             style: TextStyle(
@@ -185,7 +169,7 @@ class MyPortfolio extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Center(
+                      const Center(
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
@@ -206,16 +190,10 @@ class MyPortfolio extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Buy New',
-                  style: TextStyle(
-                    fontSize: 20.0, // Set the font size here
-                    color: Color(0xFFF4F9FF),
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyBuying()));
+
+                },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(350, 50), //Set the size of the butt
                   primary: Color(0xFF0062F4),
@@ -223,6 +201,15 @@ class MyPortfolio extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(15), // Set border radius
+                  ),
+                ),
+                child: const Text(
+                  'Buy New',
+                  style: TextStyle(
+                    fontSize: 20.0, // Set the font size here
+                    color: Color(0xFFF4F9FF),
+                    fontFamily: 'Karla',
+                    fontWeight: FontWeight.w300,
                   ),
                 ),
               ),
@@ -242,6 +229,10 @@ class MyPortfolio extends StatelessWidget {
                         color: Color(0xFFF4F9FF),
                         fontFamily: 'Karla',
                         fontWeight: FontWeight.w300,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors
+                            .white, // Optional: You can specify the underline color
+                        decorationThickness: 2.0,
                       ),
                     ),
                     Text(
@@ -251,6 +242,10 @@ class MyPortfolio extends StatelessWidget {
                         color: Color(0xFFF4F9FF),
                         fontFamily: 'Karla',
                         fontWeight: FontWeight.w300,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors
+                            .white, // Optional: You can specify the underline color
+                        decorationThickness: 2.0,
                       ),
                     ),
                   ],
