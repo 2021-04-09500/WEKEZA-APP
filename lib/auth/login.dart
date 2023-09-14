@@ -3,6 +3,10 @@ import 'package:first_flutter_application/link.dart';
 import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
 
+<<<<<<< HEAD:lib/auth/login.dart
+=======
+import './link.dart';
+>>>>>>> lucent:lib/login.dart
 
 class LoginPage extends StatelessWidget {
   Future<void> _signInWithGoogle() async {
