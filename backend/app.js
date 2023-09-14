@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = process.env.PORT || 5002;
+const port =  5003;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -111,6 +111,50 @@ app.get('/user/:email', function (req, res) {
   
     });
   });
+
+
+  app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+  
+    if (!email || !password) {
+      return res.status(400).json({
+        error: true,
+        message: 'Please provide both email and password',
+      });
+    }
+  
+    const query = 'SELECT * FROM user WHERE email = ?';
+    db.query(query, [email], (error, results, fields) => {
+      if (error) {
+        console.error('Database query error:', error);
+        return res.status(500).json({
+          error: true,
+          message: 'Database error',
+        });
+      }
+  
+      if (results.length === 0) {
+        return res.status(404).json({
+          error: true,
+          message: 'User not found',
+        });
+      }
+  
+      const user = results[0];
+      if (user.password !== password) {
+        return res.status(401).json({
+          error: true,
+          message: 'Invalid password',
+        });
+      }
+  
+      return res.json({
+        error: false,
+        data: user,
+        message: 'Login successful',
+      });
+    });
+  });
   
 
 //  Update user with id
@@ -122,7 +166,7 @@ app.put('/register', function (req, res) {
     let crdb_account = req.body.crdb_account;
     let password = req.body.password;
     if (!user_email) {
-      return res.status(400).send({ error: true, message: 'Please provide user_email' });
+      return res.status(400).send({ error: true, message: 'Please provide user_email'});
     }
   
     db.query("UPDATE user SET name = ?, phone = ?, cds_account = ?, crdb_account = ?, password = ? WHERE email = ?", [name, phone, cds_account, crdb_account, password, user_email], function (error, results, fields) {
@@ -130,5 +174,6 @@ app.put('/register', function (req, res) {
       return res.send({ error: false, data: results, message: 'user has been updated successfully.' });
     });
   });
+  
   
   //we are here
