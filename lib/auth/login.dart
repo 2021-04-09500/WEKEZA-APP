@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
         'Content-Type': 'application/json',
       },
       body: jsonEncode(<String, String>{
-        'username': username,
+        'email': username,
         'password': password,
       }),
     );
@@ -44,6 +44,7 @@ class LoginPage extends StatelessWidget {
       final responseData = jsonDecode(response.body);
       print('Login successful: ${responseData['message']}');
       isLogin = true;
+      userDetails = responseData['data'];
     } else {
       // Error handling for failed login
       print('Login failed: ${response.body}');
