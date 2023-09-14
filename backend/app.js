@@ -112,7 +112,7 @@ app.get('/user/:email', function (req, res) {
     });
   });
 
-
+  //login
   app.post('/login', (req, res) => {
     const { email, password } = req.body;
   
@@ -155,6 +155,45 @@ app.get('/user/:email', function (req, res) {
       });
     });
   });
+
+  //get uer portifolio 
+
+  app.get('/portfolio/:user_id', (req, res) => {
+    const userId = req.params.user_id;
+  
+    if (!userId) {
+      return res.status(400).json({
+        error: true,
+        message: 'Please provide a user_id',
+      });
+    }
+  
+    const query = 'SELECT * FROM user_portfolio WHERE user_id = ?';
+    db.query(query, [userId], (error, results, fields) => {
+      if (error) {
+        console.error('Database query error:', error);
+        return res.status(500).json({
+          error: true,
+          message: 'Database error',
+        });
+      }
+  
+      if (results.length === 0) {
+        return res.status(404).json({
+          error: true,
+          message: 'Portfolio not found for the user',
+        });
+      }
+  
+      return res.json({
+        error: false,
+        data: results,
+        message: 'User portfolio data retrieved successfully',
+      });
+    });
+  });
+
+
   
 
 //  Update user with id
@@ -176,4 +215,4 @@ app.put('/register', function (req, res) {
   });
   
   
-  //we are here
+  
