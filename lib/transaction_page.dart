@@ -1,3 +1,4 @@
+import 'package:first_flutter_application/share_buying.dart';
 import 'package:flutter/material.dart';
 
 class TransactionPage extends StatefulWidget {
@@ -163,6 +164,8 @@ class TransactionPageState extends State<TransactionPage> {
                 ),
                 onPressed: () {
                   // Add your order functionality here
+             Navigator.push(context, MaterialPageRoute(builder: (context) => Share()));
+                          
                 },
                 child: const Text(
                   'Order',

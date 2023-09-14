@@ -1,3 +1,4 @@
+import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
 
 class SharesBought extends StatefulWidget {
@@ -77,6 +78,8 @@ class _SharesBoughtState extends State<SharesBought> {
                                     onPressed: () {
                                       // Navigator.pushNamed(
                                       //  context, '/fourth-page');
+                               Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage()));
+                          
                                     },
                                     child: Text('Done'),
                                     style: ElevatedButton.styleFrom(
