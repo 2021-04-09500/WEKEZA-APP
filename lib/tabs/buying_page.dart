@@ -2,8 +2,6 @@ import 'package:first_flutter_application/order_shares.dart';
 import 'package:flutter/material.dart';
 //fimport 'package:get/get_connect/http/src/exceptions/exceptions.dart';
 
-void main() => runApp(MyApp());
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -97,7 +95,10 @@ class MyBuying extends StatelessWidget {
                         itemBuilder: (BuildContext context, index) {
                           return GestureDetector(
                             onTap: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => Graphs()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Graphs()));
                               // onPressed();
                             },
                             child: Container(
@@ -199,7 +200,6 @@ class MyBuying extends StatelessWidget {
                                     ],
                                   )),
                             ),
-
                           );
                         },
                         itemCount: 3,
