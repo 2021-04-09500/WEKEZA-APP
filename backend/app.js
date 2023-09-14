@@ -193,6 +193,28 @@ app.get('/user/:email', function (req, res) {
     });
   });
 
+  //get stock market data
+  app.get('/stocks', (req, res) => {
+    const query = 'SELECT * FROM stock_market';
+  
+    db.query(query, (error, results, fields) => {
+      if (error) {
+        console.error('Database query error:', error);
+        return res.status(500).json({
+          error: true,
+          message: 'Database error',
+        });
+      }
+  
+      return res.json({
+        error: false,
+        data: results,
+        message: 'Stock market data retrieved successfully',
+      });
+    });
+  });
+  
+
 
   
 
