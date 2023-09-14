@@ -28,7 +28,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     bool isRegistered;
     var headers = {'Content-Type': 'application/json'};
     var request =
-        http.Request('POST', Uri.parse('http://localhost:5002/register'));
+        http.Request('POST', Uri.parse('http://localhost:5003/register'));
     request.body = json.encode({
       "name": _fullNameController,
       "email": _emailController,

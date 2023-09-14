@@ -1,32 +1,69 @@
+import 'dart:convert';
+
 import 'package:first_flutter_application/auto_invest_page.dart';
 import 'package:first_flutter_application/order_shares.dart';
 //import 'package:first_flutter_application/transaction_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class UserPage extends StatefulWidget {
-  const UserPage({super.key});
+  const UserPage({super.key, this.user});
+
+  final user;
 
   @override
   State<UserPage> createState() => _UserPageState();
 }
 
 class _UserPageState extends State<UserPage> {
+  List portfolioData = [];
+  bool isLoading = true;
 
+  @override
+  void initState() {
+    super.initState();
+    fetchPortfolioData();
+  }
 
-  void fetchUserData ()
-   {
+  Future<void> fetchPortfolioData() async {
+    final apiUrl =
+        Uri.parse('http://localhost:5003/portfolio/${widget.user["id"]}');
+    try {
+      final response = await http.get(apiUrl);
 
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        print("Portfolio:$responseData");
+        setState(() {
+          portfolioData = responseData['data'];
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+        // Handle error cases here
+        print(
+            'Failed to fetch portfolio data. Status code: ${response.statusCode}');
+      }
+    } catch (error) {
+      setState(() {
+        isLoading = false;
+      });
+      // Handle network errors or other exceptions here
+      print('Error: $error');
+    }
+  }
 
-
-   }
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    print("Name is ${widget.user['name']}");
+    return Scaffold(
       body: Container(
         height: double.infinity,
         color: Color(0xFF001F3F),
         padding: EdgeInsets.all(16.0),
-        child: Column(
+        child: isLoading ?  Center(child: CircularProgressIndicator(),) : Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -35,12 +72,12 @@ class _UserPageState extends State<UserPage> {
               style: TextStyle(
                 color: Color(0XFFF4F9FF),
                 fontSize: 20.0,
-                fontWeight:FontWeight.w200,
+                fontWeight: FontWeight.w200,
                 height: 2,
               ),
             ),
             Text(
-              'Hassan Waziri',
+              widget.user['name'],
               style: TextStyle(
                 color: Color(0XFFF4F9FF),
                 fontSize: 30.0,
@@ -140,7 +177,10 @@ class _UserPageState extends State<UserPage> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => MyInvest()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyInvest()));
                         },
                         child: Text('Auto Invest'),
                         style: ElevatedButton.styleFrom(
@@ -162,7 +202,7 @@ class _UserPageState extends State<UserPage> {
               style: TextStyle(
                 color: Color(0XFFF4F9FF),
                 fontSize: 18.0,
-                fontFamily:'Jura',
+                fontFamily: 'Jura',
               ),
             ),
             Container(
@@ -170,8 +210,10 @@ class _UserPageState extends State<UserPage> {
               height: 180.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 5,
+                itemCount: portfolioData.length,
                 itemBuilder: (context, index) {
+                  //profit calc
+                  var profit = portfolioData[index]["earnings_per_share"] * portfolioData[index]["shares_owned"];
                   return Container(
                     margin: EdgeInsets.all(15.0),
                     decoration: BoxDecoration(
@@ -179,7 +221,7 @@ class _UserPageState extends State<UserPage> {
                       color: Color(0xFF0075F9),
                     ),
                     padding: EdgeInsets.all(28.0),
-                    child: const Column(
+                    child:  Column(
                       children: [
                         Row(
                           children: [
@@ -187,7 +229,7 @@ class _UserPageState extends State<UserPage> {
                               image: AssetImage('assets/images/logooz.png'),
                             ),
                             Text(
-                              'CRDB BANK',
+                              portfolioData[index]['company'],
                               style: TextStyle(
                                 color: Color(0XFFF4F9FF),
                                 fontSize: 20.0,
@@ -198,38 +240,35 @@ class _UserPageState extends State<UserPage> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                         // crossAxisAlignment: CrossAxisAlignment.end,
+                          // crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Column(
-                              children: [
-                                SizedBox(height:6),
-                                Text(
-                                  'Profit',
-                                  style: TextStyle(
-                                    color: Color(0XFFF4F9FF),
-                                    fontSize: 16.0,
-                                    fontFamily: 'Jura',
-                                  ),
+                            Column(children: [
+                              SizedBox(height: 6),
+                              Text(
+                                'Profit',
+                                style: TextStyle(
+                                  color: Color(0XFFF4F9FF),
+                                  fontSize: 16.0,
+                                  fontFamily: 'Jura',
                                 ),
-                                    Text(
-                                  '8,777,050',
-                                  style: TextStyle(
-                                    color: Color(0XFFF4F9FF),
-                                    fontSize: 16.0,
-                                    fontFamily:'Jura',
-                                  ),
-                                ),
-                            Text(
-                              '0.73%',
-                              style: TextStyle(
-                                color: Color(0XFFF4F9FF),
-                                fontSize: 20.0,
-                                fontFamily:'Jura',
                               ),
-                            ),
-                                  ]
+                              Text(
+                                "${profit.toString()} Tsh",
+                                style: TextStyle(
+                                  color: Color(0XFFF4F9FF),
+                                  fontSize: 16.0,
+                                  fontFamily: 'Jura',
                                 ),
-                                
+                              ),
+                              Text(
+                                '0.73%',
+                                style: TextStyle(
+                                  color: Color(0XFFF4F9FF),
+                                  fontSize: 20.0,
+                                  fontFamily: 'Jura',
+                                ),
+                              ),
+                            ]),
                           ],
                         ),
                       ],
@@ -246,8 +285,9 @@ class _UserPageState extends State<UserPage> {
                 width: 150, // Set the width as needed
                 child: ElevatedButton(
                   onPressed: () {
-                      //Temporary to view Transactions
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => Graphs()));
+                    //Temporary to view Transactions
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Graphs()));
                   },
                   child: Text('View details'),
                   style: ElevatedButton.styleFrom(
@@ -261,7 +301,7 @@ class _UserPageState extends State<UserPage> {
               ),
             ),
           ],
-        ),
+        ) 
       ),
     );
   }

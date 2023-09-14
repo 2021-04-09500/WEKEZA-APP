@@ -78,8 +78,7 @@ class _SharesBoughtState extends State<SharesBought> {
                                     onPressed: () {
                                       // Navigator.pushNamed(
                                       //  context, '/fourth-page');
-                               Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage()));
-                          
+                                      Navigator.pop(context);
                                     },
                                     child: Text('Done'),
                                     style: ElevatedButton.styleFrom(
@@ -108,4 +107,3 @@ class _SharesBoughtState extends State<SharesBought> {
     );
   }
 }
-

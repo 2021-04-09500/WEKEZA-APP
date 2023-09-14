@@ -22,14 +22,14 @@ class LoginPage extends StatelessWidget {
     // Implement Apple Sign-In logic here
   }
 
+  var userDetails;
+
   Future<bool> _login() async {
     bool isLogin = false;
     final String username = _usernameController.text;
     final String password = _passwordController.text;
 
     final response = await http.post(
-      Uri.parse(
-          'http://localhost:5000/login'), // Replace with your API endpoint
       headers: <String, String>{
         'Content-Type': 'application/json',
       },
@@ -155,7 +155,7 @@ class LoginPage extends StatelessWidget {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => UserPage()),
+                                      builder: (context) => UserPage(user: userDetails)),
                                   (route) => (false));
                             }
                           }
