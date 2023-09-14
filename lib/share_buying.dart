@@ -1,3 +1,4 @@
+import 'package:first_flutter_application/crdb_share_bought.dart';
 import 'package:flutter/material.dart';
 
 class Share extends StatefulWidget {
@@ -119,6 +120,8 @@ class _ShareState extends State<Share> {
                                     onPressed: () {
                                       // Navigator.pushNamed(
                                       //  context, '/fourth-page');
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => SharesBought()));
+                  
                                     },
                                     child: Text('Confirm'),
                                     style: ElevatedButton.styleFrom(

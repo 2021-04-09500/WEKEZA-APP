@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter App',
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         //'/': (context) => MyPortfolio(), // Default route

@@ -1,4 +1,5 @@
-import 'package:first_flutter_application/tabs/portfolio_page.dart';
+import 'package:first_flutter_application/auth/otp_screen.dart';
+//import 'package:first_flutter_application/tabs/portfolio_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -147,12 +148,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
               const SizedBox(height: 3),
               CircleInputField(
-                controller: _emailController,
-                label: 'E-mail',
-                hint: 'Enter your email address',
+                controller: _phoneController,
+                label: 'Phone',
+                hint: '0754100100',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    debugPrint("Full Name error");
                     return 'Please enter your email address';
                   }
                   const emailPattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$';
@@ -339,7 +339,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
               const SizedBox(height: 3),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 120.0),
-                child: ElevatedButton(
+                child:
+                ElevatedButton(
                   onPressed: () async {
                     final isRegistered = await _register();
                     if (isRegistered) {
@@ -347,14 +348,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyPortfolio()));
+                                builder: (context) => OtpForm()));
                       }
                     } else {
                       print("Failed to register");
                     }
                   },
                   child: const Text(
-                    "Already have an account? Login",
+                    "Registrer",
                     style: TextStyle(
                       color: Colors.white,
                       decoration: TextDecoration.underline,

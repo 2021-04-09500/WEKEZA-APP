@@ -191,8 +191,6 @@ class MyPortfolio extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => MyBuying()));
                   Navigator.push(context, MaterialPageRoute(builder: (context) => MyBuying()));
 
                 },

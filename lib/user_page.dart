@@ -1,5 +1,6 @@
 import 'package:first_flutter_application/auto_invest_page.dart';
-import 'package:first_flutter_application/transaction_page.dart';
+import 'package:first_flutter_application/order_shares.dart';
+//import 'package:first_flutter_application/transaction_page.dart';
 import 'package:flutter/material.dart';
 
 class UserPage extends StatefulWidget {
@@ -10,6 +11,14 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+
+
+  void fetchUserData ()
+   {
+
+
+
+   }
   @override
   Widget build(BuildContext context) {
      return Scaffold(
@@ -238,7 +247,7 @@ class _UserPageState extends State<UserPage> {
                 child: ElevatedButton(
                   onPressed: () {
                       //Temporary to view Transactions
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => TransactionPage()));
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => Graphs()));
                   },
                   child: Text('View details'),
                   style: ElevatedButton.styleFrom(

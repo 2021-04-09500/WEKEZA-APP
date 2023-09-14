@@ -1,4 +1,3 @@
-import 'package:first_flutter_application/tabs/portfolio_page.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -24,11 +23,6 @@ class _OtpFormState extends State<OtpForm> {
       borderRadius: BorderRadius.circular(20),
     ),
   );
-
-    gotoPortifolio() {
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MyPortfolio()), (route) => false);
-    }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +83,8 @@ class _OtpFormState extends State<OtpForm> {
                     focusedPinTheme: focusedPinTheme,
                     submittedPinTheme: submittedPinTheme,
                     validator: (pin) {
-                      return pin == '2222' ? gotoPortifolio() : 'Pin is incorrect';
+                      return pin == '2222' ? null : 'Pin is incorrect';
                     },
-                    
                     pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                     showCursor: true,
                     // ignore: avoid_print
@@ -111,8 +104,4 @@ class _OtpFormState extends State<OtpForm> {
       );
     
   }
-  
-
-  
 }
-

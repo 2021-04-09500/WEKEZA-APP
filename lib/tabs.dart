@@ -1,5 +1,6 @@
 import 'package:first_flutter_application/tabs/buying_page.dart';
-import 'package:first_flutter_application/tabs/portfolio_page.dart';
+//import 'package:first_flutter_application/tabs/portfolio_page.dart';
+import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
 import 'tabs/transaction.dart';
 
@@ -82,7 +83,7 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
                 color: Color(0xFF00162E),
                 child: TabBarView(
                   children: [
-                    MyPortfolio(), // Use the content class from another file
+                    UserPage(), // Use the content class from another file
                     MyBuying(), // You can have different content for each tab
                     MyTransactions()
                   ],

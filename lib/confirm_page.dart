@@ -1,3 +1,4 @@
+import 'package:first_flutter_application/shares_sold.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmPage extends StatefulWidget {
@@ -1032,6 +1033,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
                             top: 13,
                             child: TextButton(
                               onPressed: () {
+                             Navigator.push(context, MaterialPageRoute(builder: (context) => SharesSold()));
                                 // Code to navigate to the next page
                               },
                               child: const SizedBox(
