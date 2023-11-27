@@ -1,24 +1,8 @@
+import 'package:first_flutter_application/tabs/portfolio_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import './auto_invest_page.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter App',
-      home: MyInvest(),
-      initialRoute: '/',
-      // routes: {
-      //'/': (context) => MyPortfolio(), // Default route
-      // '/page1': (context) => MyInvest(),
-      // '/page2': (context) => MyPortfolio(), // Add other pages as needed
-      //},
-    ); //MaterialApp
-  }
-}
 
 class MyInvest extends StatelessWidget {
   @override
@@ -36,7 +20,8 @@ class MyInvest extends StatelessWidget {
                     padding: EdgeInsets.only(left: 10.0),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.popUntil(context, ModalRoute.withName('/third-page'));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => MyPortfolio()));
+  
                       },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,

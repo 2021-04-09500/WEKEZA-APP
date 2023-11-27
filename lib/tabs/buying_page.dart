@@ -1,6 +1,6 @@
+import 'package:first_flutter_application/order_shares.dart';
 import 'package:flutter/material.dart';
-
-void main() => runApp(MyApp());
+//fimport 'package:get/get_connect/http/src/exceptions/exceptions.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -95,6 +95,10 @@ class MyBuying extends StatelessWidget {
                         itemBuilder: (BuildContext context, index) {
                           return GestureDetector(
                             onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Graphs()));
                               // onPressed();
                             },
                             child: Container(

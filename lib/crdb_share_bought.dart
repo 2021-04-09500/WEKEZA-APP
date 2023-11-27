@@ -1,10 +1,14 @@
+import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SuccessfulTransaction());
+class SharesBought extends StatefulWidget {
+  const SharesBought({super.key});
+
+  @override
+  State<SharesBought> createState() => _SharesBoughtState();
 }
 
-class SuccessfulTransaction extends StatelessWidget {
+class _SharesBoughtState extends State<SharesBought> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -74,6 +78,8 @@ class SuccessfulTransaction extends StatelessWidget {
                                     onPressed: () {
                                       // Navigator.pushNamed(
                                       //  context, '/fourth-page');
+                               Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage()));
+                          
                                     },
                                     child: Text('Done'),
                                     style: ElevatedButton.styleFrom(
@@ -102,3 +108,4 @@ class SuccessfulTransaction extends StatelessWidget {
     );
   }
 }
+

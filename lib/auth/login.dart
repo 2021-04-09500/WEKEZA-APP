@@ -1,6 +1,7 @@
+import 'package:first_flutter_application/auth/registration.dart';
+import 'package:first_flutter_application/link.dart';
+import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
-
-import './link.dart';
 
 class LoginPage extends StatelessWidget {
   Future<void> _signInWithGoogle() async {
@@ -109,7 +110,12 @@ class LoginPage extends StatelessWidget {
 
                   Center(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => UserPage()),
+                            (route) => (false));
+                      },
                       child: Text(
                         'LOG-IN',
                         style: TextStyle(
@@ -213,8 +219,10 @@ class LoginPage extends StatelessWidget {
 
                   GestureDetector(
                     onTap: () {
-                      // Handle link click here
-                      print('Link clicked!');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegistrationPage()));
                     },
                     child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

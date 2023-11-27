@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SuccessfulTransactionApp());
+
+class Advisory extends StatefulWidget {
+  const Advisory({super.key});
+
+  @override
+  State<Advisory> createState() => _AdvisoryState();
 }
 
-class SuccessfulTransactionApp extends StatelessWidget {
+class _AdvisoryState extends State<Advisory> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

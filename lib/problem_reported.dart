@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SuccessfulTransactionApp());
-}
 
-class SuccessfulTransactionApp extends StatelessWidget {
+class ProblemReport extends StatelessWidget {
+  const ProblemReport({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

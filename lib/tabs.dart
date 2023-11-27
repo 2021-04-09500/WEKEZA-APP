@@ -1,22 +1,17 @@
+import 'package:first_flutter_application/tabs/buying_page.dart';
+//import 'package:first_flutter_application/tabs/portfolio_page.dart';
+import 'package:first_flutter_application/user_page.dart';
 import 'package:flutter/material.dart';
-import './portfolio_page.dart';
-import './buying_page.dart';
-import './transaction.dart';
+import 'tabs/transaction.dart';
 
-void main() {
-  runApp(MyApp());
-}
+class MyTabbedPage extends StatefulWidget {
+  const MyTabbedPage({super.key});
 
-class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyTabbedPage(),
-    );
-  }
+  State<MyTabbedPage> createState() => _MyTabbedPageState();
 }
 
-class MyTabbedPage extends StatelessWidget {
+class _MyTabbedPageState extends State<MyTabbedPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -88,9 +83,9 @@ class MyTabbedPage extends StatelessWidget {
                 color: Color(0xFF00162E),
                 child: TabBarView(
                   children: [
-                    MyPortfolio(), // Use the content class from another file
+                    UserPage(), // Use the content class from another file
                     MyBuying(), // You can have different content for each tab
-                    MyDividend(),
+                    MyTransactions()
                   ],
                 ),
               ),

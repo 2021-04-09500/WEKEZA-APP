@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SuccessfulTransactionApp());
+class Congratulation extends StatefulWidget {
+  const Congratulation({super.key});
+
+  @override
+  State<Congratulation> createState() => _MyWidgetState();
 }
 
-class SuccessfulTransactionApp extends StatelessWidget {
+class _MyWidgetState extends State<Congratulation> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       home: Scaffold(
         backgroundColor: const Color(0xFF001F3F),
         body: SingleChildScrollView(

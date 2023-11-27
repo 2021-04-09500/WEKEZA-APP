@@ -1,10 +1,14 @@
+import 'package:first_flutter_application/crdb_share_bought.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SuccessfulTransactionApp());
+class Share extends StatefulWidget {
+  const Share({super.key});
+
+  @override
+  State<Share> createState() => _ShareState();
 }
 
-class SuccessfulTransactionApp extends StatelessWidget {
+class _ShareState extends State<Share> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -116,6 +120,8 @@ class SuccessfulTransactionApp extends StatelessWidget {
                                     onPressed: () {
                                       // Navigator.pushNamed(
                                       //  context, '/fourth-page');
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => SharesBought()));
+                  
                                     },
                                     child: Text('Confirm'),
                                     style: ElevatedButton.styleFrom(
